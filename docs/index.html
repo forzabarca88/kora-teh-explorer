@@ -195,7 +195,7 @@
             showLoading();
             
             // To be secure and exact, ask API for the file download URL directly
-            const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.postsDir}/${fileName}`;
+            const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/docs/${CONFIG.postsDir}/${fileName}`;
             
             try {
                 const response = await fetch(apiUrl);
