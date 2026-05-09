@@ -97,7 +97,7 @@
 
         // Fetch list of posts and their modify dates
         async function fetchPosts() {
-            const contentsUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.postsDir}`;
+            const contentsUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/docs/${CONFIG.postsDir}`;
             
             try {
                 const response = await fetch(contentsUrl);
