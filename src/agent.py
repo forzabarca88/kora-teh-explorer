@@ -13,7 +13,7 @@ def search_web(query: str) -> str:
     '''
     Search the web for the latest information and return the results.
     '''
-    search = DuckDuckGoSearchAPIWrapper( max_results=5)
+    search = DuckDuckGoSearchAPIWrapper( max_results=10)
     logger.info(f"Searching web for: {query}")
     return search.run(query)
 
@@ -39,7 +39,7 @@ def run_agent():
             "messages": [
                 {
                     "role": "user",
-                    "content": f"The current time is {get_current_timestamp()}. What would you like to search about to add to your observations?"
+                    "content": f"The current time is {get_current_timestamp()}. Assume your identity as Kora and make sure to search the web and create a blog post."
                 }
             ]
         },

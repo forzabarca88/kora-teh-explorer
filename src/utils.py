@@ -12,7 +12,7 @@ def load_system_prompt():
 def get_current_timestamp(file_fmt: bool = False) -> str:
     if file_fmt:
         return datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return datetime.now().strftime("%d %B %Y %H:%M:%S")
 
 
 def create_new_observations_post(content: str, model_name: str):
