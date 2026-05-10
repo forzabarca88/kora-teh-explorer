@@ -85,6 +85,7 @@ def run_agent():
         tools=[search_web, create_blog_post, read_memory, replace_memory],
         system_prompt=SYSTEM_PROMPT
     )
+    full_message = []
     for token, metadata in agent.stream(
         {
             "messages": [
@@ -101,5 +102,9 @@ def run_agent():
         stream_mode='messages'
     ):
         if hasattr(token, 'content') and token.content:
+            full_message.append(token.content)
             print(token.content, end='', flush=True)
+    
+    if full_message:
+        logger.info(f"Agent response: {''.join(full_message)}")
 
