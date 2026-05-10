@@ -3,14 +3,43 @@ from src.utils import (
     get_current_timestamp, create_new_observations_post, read_memory_file, write_memory_file
 )
 import logging
+from logging.handlers import RotatingFileHandler
+from pathlib import Path
 from langchain.agents import create_agent
-from langgraph.graph import StateGraph, START, END
 from langchain.tools import tool
 from langchain_openai import ChatOpenAI
 from langchain_community.utilities.duckduckgo_search import DuckDuckGoSearchAPIWrapper
 
-logging.basicConfig(level=LOGGING_LEVEL)
+# Set up logging with both console and rotating file handler
 logger = logging.getLogger(__name__)
+logger.setLevel(LOGGING_LEVEL)
+
+# Create logs directory if it doesn't exist
+log_dir = Path(__file__).parent.parent / "logs"
+log_dir.mkdir(exist_ok=True)
+
+# Console handler
+console_handler = logging.StreamHandler()
+console_handler.setLevel(LOGGING_LEVEL)
+
+# Rotating file handler
+file_handler = RotatingFileHandler(
+    log_dir / "kora.log",
+    maxBytes=10485760,  # 10MB
+    backupCount=5
+)
+file_handler.setLevel(LOGGING_LEVEL)
+
+# Formatter
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+console_handler.setFormatter(formatter)
+file_handler.setFormatter(formatter)
+
+# Add handlers to logger
+logger.addHandler(console_handler)
+logger.addHandler(file_handler)
 
 
 @tool
