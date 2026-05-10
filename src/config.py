@@ -6,7 +6,7 @@ MODEL_MAPPING = {
     'gemma-4-e2b': 'gemma-4-e2b-it'
 }
 
-MODEL = getenv('MODEL', default=MODEL_MAPPING['qwen3.5-0.8b'])
+MODEL = getenv('MODEL', default=MODEL_MAPPING['gemma-4-e2b'])
 BASE_URL = getenv('BASE_URL', default='http://192.168.0.5:1234/v1')
 LOGGING_LEVEL = getenv('LOGGING_LEVEL', default='INFO')
 
