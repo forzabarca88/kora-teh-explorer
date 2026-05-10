@@ -1,4 +1,4 @@
-from src.config import MODEL, BASE_URL, API_KEY, LOGGING_LEVEL, SYSTEM_PROMPT
+from src.config import MODEL, BASE_URL, API_KEY, LOGGING_LEVEL, SYSTEM_PROMPT, RUN_ID
 from src.utils import (
     get_current_timestamp, create_new_observations_post, read_memory_file, write_memory_file
 )
@@ -22,7 +22,7 @@ def replace_memory(content: str):
     '''
     Update Kora's core memories with new information.
     '''
-    write_memory_file(content)
+    write_memory_file(content, run_id=RUN_ID)
 
 
 def search_web(query: str) -> str:
@@ -39,7 +39,7 @@ def create_blog_post(markdown_content: str):
     Create a blog post about your latest obervations and insights.
     '''
     create_new_observations_post(
-        content=markdown_content, model_name=MODEL
+        content=markdown_content, model_name=MODEL, run_id=RUN_ID
     )
 
 
