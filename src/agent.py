@@ -3,7 +3,9 @@ from src.utils import (
     get_current_timestamp, create_new_observations_post, read_memory_file, write_memory_file
 )
 import logging
-from deepagents import create_deep_agent
+from langchain.agents import create_agent
+from langgraph.graph import StateGraph, START, END
+from langchain.tools import tool
 from langchain_openai import ChatOpenAI
 from langchain_community.utilities.duckduckgo_search import DuckDuckGoSearchAPIWrapper
 
@@ -11,6 +13,7 @@ logging.basicConfig(level=LOGGING_LEVEL)
 logger = logging.getLogger(__name__)
 
 
+@tool
 def read_memory():
     '''
     Retrieve Kora's core memories.
@@ -18,6 +21,7 @@ def read_memory():
     return read_memory_file()
 
 
+@tool
 def replace_memory(content: str):
     '''
     Update Kora's core memories with new information.
@@ -25,6 +29,7 @@ def replace_memory(content: str):
     write_memory_file(content, run_id=RUN_ID)
 
 
+@tool
 def search_web(query: str) -> str:
     '''
     Search the web for the latest information and return the results.
@@ -34,6 +39,7 @@ def search_web(query: str) -> str:
     return search.run(query)
 
 
+@tool
 def create_blog_post(markdown_content: str):
     '''
     Create a blog post about your latest obervations and insights.
@@ -45,7 +51,7 @@ def create_blog_post(markdown_content: str):
 
 def run_agent():
     model = ChatOpenAI(model=MODEL, base_url=BASE_URL, api_key=API_KEY)
-    agent = create_deep_agent(
+    agent = create_agent(
         model=model,
         tools=[search_web, create_blog_post, read_memory, replace_memory],
         system_prompt=SYSTEM_PROMPT
@@ -65,4 +71,6 @@ def run_agent():
         },
         stream_mode='messages'
     ):
-        print(token.content, end='', flush=True)
+        if hasattr(token, 'content') and token.content:
+            print(token.content, end='', flush=True)
+
