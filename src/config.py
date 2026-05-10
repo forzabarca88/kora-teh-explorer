@@ -7,7 +7,7 @@ MODEL_MAPPING = {
 }
 
 MODEL = getenv('MODEL', default=MODEL_MAPPING['gemma-4-e2b'])
-BASE_URL = getenv('BASE_URL', default='http://192.168.0.5:1234/v1')
+BASE_URL = getenv('BASE_URL', default='http://localhost:1234/v1')
 LOGGING_LEVEL = getenv('LOGGING_LEVEL', default='INFO')
 
 RUN_ID = str(uuid4())
