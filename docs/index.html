@@ -85,6 +85,25 @@
                 .replace(/\b\w/g, char => char.toUpperCase());
         }
 
+        // Helper: Get month/year key for grouping
+        function getMonthKey(date) {
+            return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0');
+        }
+
+        // Toggle month visibility
+        function toggleMonth(id) {
+            const content = document.getElementById(`month-${id}`);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                const arrow = document.getElementById(`arrow-${id}`);
+                if (arrow) arrow.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>';
+            } else {
+                content.classList.add('hidden');
+                const arrow = document.getElementById(`arrow-${id}`);
+                if (arrow) arrow.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>';
+            }
+        }
+
         // Helper: Show Loading state
         function showLoading() {
             app.innerHTML = `
@@ -168,26 +187,65 @@
                 return;
             }
 
-            let html = '<div class="space-y-6">';
+            let html = '<div class="space-y-10">';
+            
+            // Group posts by month
+            const groupedPosts = {};
             for (const post of posts) {
-                const dateDisplay = post.date.getTime() > 0 
-                    ? post.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) 
-                    : 'Unknown Date';
-
+                const monthKey = getMonthKey(post.date);
+                if (!groupedPosts[monthKey]) {
+                    groupedPosts[monthKey] = { date: new Date(), posts: [] };
+                }
+                groupedPosts[monthKey].posts.push(post);
+            }
+            
+            // Render each month group (descending order - newest first)
+            const sortedMonthKeys = Object.keys(groupedPosts).sort().reverse();
+            for (const monthKey of sortedMonthKeys) {
+                const { date: monthDate, posts: monthPosts } = groupedPosts[monthKey];
+                
+                // Month section with toggle
                 html += `
-                    <article class="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100 transition-all duration-200 transform hover:-translate-y-1">
-                        <a href="#post=${encodeURIComponent(post.name)}" class="block">
-                            <h2 class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">${post.title}</h2>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                <time>${dateDisplay}</time>
+                    <div class="mb-8">
+                        <button id="toggle-${monthKey}" onclick="toggleMonth('${monthKey}')" class="flex items-center justify-between w-full text-left group">
+                            <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                                <span class="bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded-full">${monthDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
+                            </h3>
+                            <span id="arrow-${monthKey}" class="transition-transform duration-200 text-gray-400 group-hover:text-blue-500">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </span>
+                        </button>
+                        <div id="month-${monthKey}" class="hidden pl-8 border-l-2 border-gray-100 ml-4">
+                            <div class="space-y-4 mt-2">
+                `;
+                
+                for (const post of monthPosts) {
+                    const dateDisplay = post.date.getTime() > 0 
+                        ? post.date.toLocaleDateString('en-US', { day: 'numeric' }) 
+                        : 'Unknown Date';
+
+                    html += `
+                                <article class="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100 transition-all duration-200 transform hover:-translate-y-1">
+                                    <a href="#post=${encodeURIComponent(post.name)}" class="block">
+                                        <h2 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">${post.title}</h2>
+                                        <div class="flex items-center text-sm text-gray-500">
+                                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                            <time>${dateDisplay}</time>
+                                        </div>
+                                    </a>
+                                </article>
+                            `;
+                }
+                html += `
                             </div>
-                        </a>
-                    </article>
+                        </div>
+                    </div>
                 `;
             }
+            
             html += '</div>';
             app.innerHTML = html;
+            return posts[0].name; // Return latest post name for auto-open
         }
 
         // Render a single post
@@ -231,11 +289,14 @@
         }
 
         // Basic Hash Router
-        async function router() {
+        async function router(latestPostName) {
             const hash = window.location.hash;
             if (hash.startsWith('#post=')) {
                 const fileName = decodeURIComponent(hash.substring(6));
                 await renderPost(fileName);
+            } else if (latestPostName) {
+                // Auto-open latest post if no specific post requested
+                window.location.hash = `#post=${encodeURIComponent(latestPostName)}`;
             } else {
                 await renderList();
             }
@@ -243,8 +304,11 @@
         }
 
         // Event listeners
-        window.addEventListener('hashchange', router);
-        window.addEventListener('DOMContentLoaded', router);
+        window.addEventListener('hashchange', () => router());
+        window.addEventListener('DOMContentLoaded', async () => {
+            const latestPost = await renderList();
+            router(latestPost);
+        });
     </script>
 </body>
 </html>
