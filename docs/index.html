@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kora Teh Explorer's Blog</title>
+    <title>Earth Observation Log // Kora teh Explorer</title>
 
     <!-- Tailwind CSS with Typography Plugin for beautiful Markdown rendering -->
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
@@ -15,26 +15,61 @@
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
 
     <style>
-        /* Smooth scrolling and basic clean ups */
+        /* Smooth scrolling, alien theme variables and animations */
         html { scroll-behavior: smooth; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        .spinner { border: 3px solid rgba(0,0,0,0.1); border-left-color: #3b82f6; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #020617; /* slate-950 */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(6, 182, 212, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.04), transparent 25%);
+        }
+
+        .alien-spinner { 
+            border: 2px solid rgba(6, 182, 212, 0.1); 
+            border-left-color: #22d3ee; 
+            border-radius: 50%; 
+            width: 36px; 
+            height: 36px; 
+            animation: spin 1s linear infinite, pulseGlow 2s ease-in-out infinite; 
+        }
+
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 10px rgba(34,211,238,0.2); } 50% { box-shadow: 0 0 25px rgba(34,211,238,0.6); } }
+
+        /* Hide details marker for summary to create custom collapsing UI */
+        details > summary::-webkit-details-marker { display: none; }
+        details > summary { list-style: none; }
+
+        /* Alien aesthetic scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #0891b2; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+<body class="bg-slate-950 text-slate-300 min-h-screen flex flex-col selection:bg-cyan-500/30">
 
     <!-- Header -->
-    <header class="bg-white border-b sticky top-0 z-10 shadow-sm">
-        <div class="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
+    <header class="bg-slate-900/90 backdrop-blur border-b border-cyan-800/80 sticky top-0 z-10 shadow-[0_0_20px_rgba(6,182,212,0.1)]">
+        <div class="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
-                <h1 class="text-2xl font-extrabold text-gray-900 tracking-tight cursor-pointer hover:text-blue-600 transition-colors" onclick="window.location.hash=''">
-                    Kora Teh Explorer
+                <h1 class="text-2xl font-extrabold text-cyan-400 tracking-tight cursor-pointer hover:text-cyan-300 transition-colors drop-shadow-[0_0_8px_rgba(34,211,238,0.4)] uppercase flex items-center gap-3 font-mono" onclick="window.location.hash=''">
+                    <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Earth Observation Log
                 </h1>
-                <p class="text-sm text-gray-500 mt-1"><a href="https://github.com/forzabarca88/kora-teh-explorer" target="_blank" class="text-blue-500 hover:text-blue-700">View on GitHub</a></p>
+                <div class="text-xs text-cyan-600/80 mt-3 font-mono uppercase tracking-wider space-y-1">
+                    <p>> Operative: <span class="text-cyan-500">Kora teh Explorer</span></p>
+                    <p>> Origin: <span class="text-cyan-500">Planet AK-47, Andromeda Galaxy</span></p>
+                    <p>> Target Species: <span class="text-cyan-500">Humans (Milky Way Sector)</span></p>
+                </div>
             </div>
-            <nav>
-                <a href="#" onclick="window.location.hash=''" class="text-gray-500 hover:text-gray-900 font-medium">Home</a>
+            <nav class="flex gap-3 w-full md:w-auto">
+                <a href="#" onclick="window.location.hash=''" class="text-cyan-500/80 hover:text-cyan-300 font-mono text-sm border border-cyan-800/50 px-4 py-2 rounded bg-cyan-950/30 transition-all hover:shadow-[0_0_10px_rgba(34,211,238,0.2)] text-center flex-1 md:flex-none">Log Index</a>
+                <a href="https://github.com/forzabarca88/kora-teh-explorer" target="_blank" class="text-cyan-500/80 hover:text-cyan-300 font-mono text-sm border border-cyan-800/50 px-4 py-2 rounded bg-cyan-950/30 transition-all hover:shadow-[0_0_10px_rgba(34,211,238,0.2)] text-center flex-1 md:flex-none">Data Source</a>
             </nav>
         </div>
     </header>
@@ -47,9 +82,10 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t mt-auto">
-        <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
-            &copy; <span id="year"></span> Kora Teh Explorer. Powered by GitHub Pages.
+    <footer class="bg-slate-900 border-t border-cyan-800/40 mt-auto font-mono">
+        <div class="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8 text-center text-xs text-cyan-700/60 leading-relaxed">
+            &copy; Earth Cycle <span id="year"></span> | Kora teh Explorer | Planetary Reconnaissance Division<br>
+            Transmitting data from Andromeda Galaxy via GitHub Pages Sub-Relay System.
         </div>
     </footer>
 
@@ -77,6 +113,9 @@
         const app = document.getElementById('app');
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        let cachedPosts = null;
+        let isInitialLoad = true;
+
         // Helper: Format filename to a readable title
         function formatTitle(filename) {
             return filename
@@ -88,15 +127,17 @@
         // Helper: Show Loading state
         function showLoading() {
             app.innerHTML = `
-                <div class="flex justify-center items-center py-20">
-                    <div class="spinner"></div>
-                    <span class="ml-3 text-gray-500 font-medium">Loading...</span>
+                <div class="flex flex-col justify-center items-center py-32 font-mono text-cyan-500">
+                    <div class="alien-spinner mb-6"></div>
+                    <span class="tracking-[0.3em] text-sm animate-pulse">ESTABLISHING UPLINK...</span>
                 </div>
             `;
         }
 
-        // Fetch list of posts and their modify dates
-        async function fetchPosts() {
+        // Fetch and cache list of posts and their modify dates
+        async function getPosts() {
+            if (cachedPosts !== null) return cachedPosts;
+
             const contentsUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/docs/${CONFIG.postsDir}`;
             
             try {
@@ -111,7 +152,6 @@
                     const cacheKey = `mdate_${file.sha}`;
                     let dateStr = localStorage.getItem(cacheKey);
 
-                    // If we don't have the date cached for this specific file version, fetch it
                     if (!dateStr) {
                         try {
                             const commitUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/commits?path=${file.path}&per_page=1`;
@@ -136,56 +176,80 @@
                 }));
 
                 // Sort purely by date descending
-                return postsWithDates.sort((a, b) => b.date - a.date);
+                cachedPosts = postsWithDates.sort((a, b) => b.date - a.date);
+                return cachedPosts;
 
             } catch (error) {
                 console.error(error);
                 app.innerHTML = `
-                    <div class="bg-red-50 text-red-700 p-6 rounded-lg border border-red-200">
-                        <h2 class="text-lg font-bold mb-2">Configuration Required</h2>
-                        <p>Unable to fetch posts. If you are viewing this locally or on a custom domain, please edit the <code>index.html</code> file and update the <code>CONFIG</code> object with your exact GitHub Username and Repository name.</p>
-                        <p class="mt-2 text-sm opacity-80">Error details: ${error.message}</p>
+                    <div class="bg-red-950/50 text-red-400 p-6 rounded-lg border border-red-900/50 font-mono">
+                        <h2 class="text-lg font-bold mb-2">[ SYSTEM ERROR: UPLINK FAILED ]</h2>
+                        <p>Unable to retrieve observation data. Update GitHub credentials in root interface.</p>
+                        <p class="mt-2 text-xs opacity-80">Diagnostic: ${error.message}</p>
                     </div>`;
                 return null;
             }
         }
 
-        // Render the list of posts
+        // Render the list of posts grouped by month
         async function renderList() {
             showLoading();
-            const posts = await fetchPosts();
+            const posts = await getPosts();
             
-            if (!posts) return; // Error handled in fetchPosts
+            if (!posts) return;
 
             if (posts.length === 0) {
                 app.innerHTML = `
-                    <div class="text-center py-20 text-gray-500">
-                        <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    <div class="text-center py-20 text-cyan-600/50 font-mono">
+                        <svg class="mx-auto h-12 w-12 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <p class="text-lg">No markdown files found in the <code>${CONFIG.postsDir}</code> directory.</p>
+                        <p class="text-lg">[ WARNING: NO OBSERVATION DATA FOUND IN TARGET DIRECTORY ]</p>
                     </div>`;
                 return;
             }
 
-            let html = '<div class="space-y-6">';
-            for (const post of posts) {
-                const dateDisplay = post.date.getTime() > 0 
-                    ? post.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) 
-                    : 'Unknown Date';
+            // Group posts by Month Year
+            const grouped = [];
+            posts.forEach(post => {
+                const d = post.date;
+                const monthYear = d.getTime() > 0 
+                    ? `${d.toLocaleString('en-US', { month: 'long' })} ${d.getFullYear()}` 
+                    : 'Unknown Cycle';
+                
+                let group = grouped.find(g => g.monthYear === monthYear);
+                if (!group) {
+                    group = { monthYear, posts: [] };
+                    grouped.push(group);
+                }
+                group.posts.push(post);
+            });
 
+            let html = '<div class="space-y-6">';
+            grouped.forEach(group => {
                 html += `
-                    <article class="group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100 transition-all duration-200 transform hover:-translate-y-1">
-                        <a href="#post=${encodeURIComponent(post.name)}" class="block">
-                            <h2 class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">${post.title}</h2>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                <time>${dateDisplay}</time>
-                            </div>
-                        </a>
-                    </article>
+                    <details class="group border border-cyan-800/40 bg-slate-900/40 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.05)]">
+                        <summary class="cursor-pointer p-5 text-lg font-mono text-cyan-300 bg-slate-800/40 hover:bg-slate-800/80 transition-colors flex justify-between items-center list-none select-none">
+                            <span>> LOG CYCLE: ${group.monthYear}</span>
+                            <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </summary>
+                        <div class="p-4 space-y-3 bg-slate-900/60 border-t border-cyan-800/40">
                 `;
-            }
+                
+                group.posts.forEach(post => {
+                    const dateDisplay = post.date.getTime() > 0 
+                        ? post.date.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }) 
+                        : '??/??/????';
+                    html += `
+                        <a href="#post=${encodeURIComponent(post.name)}" class="block p-4 rounded-lg bg-slate-950/80 border border-cyan-900/30 hover:border-cyan-400/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all flex justify-between items-center group/item">
+                            <span class="text-cyan-50 group-hover/item:text-cyan-300 font-sans font-medium transition-colors">${post.title}</span>
+                            <span class="text-xs text-cyan-600 font-mono ml-4 shrink-0 tracking-wider">${dateDisplay}</span>
+                        </a>
+                    `;
+                });
+                
+                html += `</div></details>`;
+            });
             html += '</div>';
             app.innerHTML = html;
         }
@@ -194,7 +258,6 @@
         async function renderPost(fileName) {
             showLoading();
             
-            // To be secure and exact, ask API for the file download URL directly
             const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/docs/${CONFIG.postsDir}/${fileName}`;
             
             try {
@@ -211,28 +274,42 @@
 
                 app.innerHTML = `
                     <div class="mb-8">
-                        <a href="#" class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                            Back to all posts
+                        <a href="#" class="inline-flex items-center text-sm font-mono text-cyan-400 hover:text-cyan-200 transition-colors bg-cyan-950/40 px-4 py-2 rounded-lg border border-cyan-800/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                            [ RETURN TO ARCHIVE ]
                         </a>
                     </div>
-                    <article class="prose prose-lg prose-blue max-w-none bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <article class="prose prose-invert prose-cyan max-w-none bg-slate-900/60 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-[0_0_30px_rgba(6,182,212,0.05)] border border-cyan-800/40 font-sans leading-relaxed">
                         ${safeHtml}
                     </article>
                 `;
             } catch (error) {
                 app.innerHTML = `
-                    <div class="text-center py-20">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Post not found</h2>
-                        <a href="#" class="text-blue-600 hover:underline">Return home</a>
+                    <div class="text-center py-20 font-mono text-cyan-500">
+                        <h2 class="text-xl font-bold text-cyan-400 mb-4">[ DATA CORRUPTION: FILE NOT FOUND ]</h2>
+                        <a href="#" class="text-cyan-600 hover:text-cyan-400 underline underline-offset-4 decoration-cyan-800">Return to index</a>
                     </div>
                 `;
             }
         }
 
-        // Basic Hash Router
+        // Hash Router Configuration
         async function router() {
             const hash = window.location.hash;
+
+            // Handle automatic latest post behavior on initial visit to home
+            if (isInitialLoad) {
+                isInitialLoad = false;
+                if (!hash || hash === '#' || hash === '') {
+                    const posts = await getPosts();
+                    if (posts && posts.length > 0) {
+                        // Routing to the latest post will re-trigger the router immediately
+                        window.location.hash = `#post=${encodeURIComponent(posts[0].name)}`;
+                        return;
+                    }
+                }
+            }
+
             if (hash.startsWith('#post=')) {
                 const fileName = decodeURIComponent(hash.substring(6));
                 await renderPost(fileName);
