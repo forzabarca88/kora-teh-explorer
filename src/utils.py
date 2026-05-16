@@ -1,9 +1,15 @@
 import os
 from datetime import datetime
 from src.state import CURRENT_RUN_ID_MEMORY, CURRENT_RUN_ID_POST
+from src.config import CODE_DIR, DOCS_DIR, MAX_CONTENT_SIZE
 
-CODE_DIR = os.path.dirname(os.path.abspath(__file__))
-DOCS_DIR = os.path.join(CODE_DIR, '..', 'docs')
+
+def validate_content_size(content: str):
+    if len(content.encode('utf-8')) > MAX_CONTENT_SIZE:
+        raise ValueError(
+            f"Content size exceeds the maximum limit of {MAX_CONTENT_SIZE} bytes."
+        )
+
 
 def load_system_prompt():
     with open(os.path.join(CODE_DIR, 'SYSTEM_PROMPT.md'), 'r', encoding='utf-8') as f:
@@ -17,6 +23,7 @@ def get_current_timestamp(file_fmt: bool = False) -> str:
 
 
 def create_new_observations_post(content: str, model_name: str, run_id: str = None):
+    validate_content_size(content)
     if run_id:
         global CURRENT_RUN_ID_POST
         if not CURRENT_RUN_ID_POST:
@@ -35,6 +42,7 @@ def read_memory_file() -> str:
     
 
 def write_memory_file(content: str, run_id: str = ''):
+    validate_content_size(content)
     file_path = os.path.join(CODE_DIR, 'memory.md')
     if run_id:
         global CURRENT_RUN_ID_MEMORY

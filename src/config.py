@@ -1,4 +1,5 @@
 from os import getenv
+from os.path import dirname, abspath, join
 from uuid import uuid4
 
 MODEL_MAPPING = {
@@ -12,6 +13,10 @@ LOGGING_LEVEL = getenv('LOGGING_LEVEL', default='INFO')
 
 RUN_ID = str(uuid4())
 API_KEY = getenv('API_KEY', default='not used')
+
+CODE_DIR = dirname(abspath(__file__))
+DOCS_DIR = join(CODE_DIR, '..', 'docs')
+MAX_CONTENT_SIZE = 100 * 1024  # 100 KB
 
 from src.utils import load_system_prompt
 SYSTEM_PROMPT = load_system_prompt()
