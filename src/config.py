@@ -11,7 +11,7 @@ BASE_URL = getenv('BASE_URL', default='http://localhost:1234/v1')
 LOGGING_LEVEL = getenv('LOGGING_LEVEL', default='INFO')
 
 RUN_ID = str(uuid4())
-API_KEY = 'fake'
+API_KEY = getenv('API_KEY', default='not used')
 
 from src.utils import load_system_prompt
 SYSTEM_PROMPT = load_system_prompt()
