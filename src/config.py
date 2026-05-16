@@ -18,5 +18,5 @@ CODE_DIR = dirname(abspath(__file__))
 DOCS_DIR = join(CODE_DIR, '..', 'docs')
 MAX_CONTENT_SIZE = 100 * 1024  # 100 KB
 
-from src.utils import load_system_prompt
-SYSTEM_PROMPT = load_system_prompt()
+with open(join(CODE_DIR, 'SYSTEM_PROMPT.md'), 'r', encoding='utf-8') as f:
+    SYSTEM_PROMPT = f.read()

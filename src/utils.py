@@ -11,11 +11,6 @@ def validate_content_size(content: str):
         )
 
 
-def load_system_prompt():
-    with open(os.path.join(CODE_DIR, 'SYSTEM_PROMPT.md'), 'r', encoding='utf-8') as f:
-        return f.read()
-
-
 def get_current_timestamp(file_fmt: bool = False) -> str:
     if file_fmt:
         return datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
