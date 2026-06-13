@@ -3,8 +3,8 @@ from os.path import dirname, abspath, join
 from uuid import uuid4
 
 MODEL_MAPPING = {
-    'qwen3.5-0.8b': 'qwen3.5-0.8b-claude-4.6-opus-reasoning-distilled',
-    'gemma-4-e2b': 'gemma-4-e2b-it'
+    'qwen3.5-0.8b': 'unsloth/qwen3.5-0.8b',
+    'gemma-4-e2b': 'unsloth/gemma-4-E2B-it-qat'
 }
 
 MODEL = getenv('MODEL', default=MODEL_MAPPING['gemma-4-e2b'])
