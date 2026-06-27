@@ -171,7 +171,8 @@
                     return {
                         ...file,
                         title: formatTitle(file.name),
-                        date: dateStr ? new Date(dateStr) : new Date(0)
+                        date: dateStr ? new Date(dateStr) : new Date(0),
+                        content: null // Holds full post content if retrieved for search
                     };
                 }));
 
@@ -191,27 +192,89 @@
             }
         }
 
-        // Render the list of posts grouped by month
-        async function renderList() {
-            showLoading();
-            const posts = await getPosts();
+        // Fetch single post content for deep text search and save to cache
+        async function fetchPostContent(post) {
+            if (post.content) return post.content;
             
+            const cacheKey = `content_${post.sha}`;
+            let cachedContent = localStorage.getItem(cacheKey);
+            if (cachedContent) {
+                post.content = cachedContent;
+                return cachedContent;
+            }
+
+            try {
+                const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/docs/${CONFIG.postsDir}/${post.name}`;
+                const response = await fetch(apiUrl);
+                if (!response.ok) return '';
+                const data = await response.json();
+                const rawRes = await fetch(data.download_url);
+                const markdown = await rawRes.text();
+                
+                post.content = markdown;
+                localStorage.setItem(cacheKey, markdown);
+                return markdown;
+            } catch (e) {
+                console.warn('Could not fetch content for', post.name, e);
+                return '';
+            }
+        }
+
+        // Render the filtered list based on user search queries
+        async function filterAndRenderPosts(query, searchContent) {
+            const postsContainer = document.getElementById('posts-list-container');
+            if (!postsContainer) return;
+
+            const posts = await getPosts();
             if (!posts) return;
 
-            if (posts.length === 0) {
-                app.innerHTML = `
-                    <div class="text-center py-20 text-cyan-600/50 font-mono">
-                        <svg class="mx-auto h-12 w-12 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <p class="text-lg">[ WARNING: NO OBSERVATION DATA FOUND IN TARGET DIRECTORY ]</p>
+            const cleanQuery = query.toLowerCase().trim();
+            const statusEl = document.getElementById('search-status');
+
+            // If full-text search is active, fetch any uncached Markdown files
+            if (searchContent && cleanQuery !== '') {
+                if (statusEl) {
+                    statusEl.textContent = '[ SCANNING FULL-TEXT DATABASE... ]';
+                    statusEl.classList.add('animate-pulse');
+                }
+                
+                // Fetch in parallel utilizing local caching
+                await Promise.all(posts.map(post => fetchPostContent(post)));
+                
+                if (statusEl) {
+                    statusEl.textContent = '[ DATABASE SCAN COMPLETE ]';
+                    statusEl.classList.remove('animate-pulse');
+                }
+            } else if (statusEl) {
+                statusEl.textContent = cleanQuery !== '' ? '[ DECODING TITLES ]' : '';
+            }
+
+            const filtered = posts.filter(post => {
+                if (cleanQuery === '') return true;
+
+                // Match title
+                const titleMatch = post.title.toLowerCase().includes(cleanQuery);
+                if (titleMatch) return true;
+
+                // Match content (if active)
+                if (searchContent && post.content) {
+                    return post.content.toLowerCase().includes(cleanQuery);
+                }
+
+                return false;
+            });
+
+            if (filtered.length === 0) {
+                postsContainer.innerHTML = `
+                    <div class="text-center py-12 text-cyan-600/50 font-mono border border-dashed border-cyan-800/30 rounded-xl">
+                        <p class="text-sm">[ NO MATCHING LOG ENTRIES TRANSMITTED ]</p>
                     </div>`;
                 return;
             }
 
-            // Group posts by Month Year
+            // Group matched posts by Month Year
             const grouped = [];
-            posts.forEach(post => {
+            filtered.forEach(post => {
                 const d = post.date;
                 const monthYear = d.getTime() > 0 
                     ? `${d.toLocaleString('en-US', { month: 'long' })} ${d.getFullYear()}` 
@@ -227,8 +290,10 @@
 
             let html = '<div class="space-y-6">';
             grouped.forEach(group => {
+                // If the user has typed a query, expand the details element by default to show items instantly
+                const isOpen = cleanQuery !== '' ? 'open' : '';
                 html += `
-                    <details class="group border border-cyan-800/40 bg-slate-900/40 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.05)]">
+                    <details ${isOpen} class="group border border-cyan-800/40 bg-slate-900/40 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.05)]">
                         <summary class="cursor-pointer p-5 text-lg font-mono text-cyan-300 bg-slate-800/40 hover:bg-slate-800/80 transition-colors flex justify-between items-center list-none select-none">
                             <span>> LOG CYCLE: ${group.monthYear}</span>
                             <svg class="w-5 h-5 transform group-open:rotate-180 transition-transform text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -251,7 +316,75 @@
                 html += `</div></details>`;
             });
             html += '</div>';
-            app.innerHTML = html;
+            postsContainer.innerHTML = html;
+        }
+
+        // Render the search container followed by the dynamic post directory
+        async function renderList() {
+            showLoading();
+            const posts = await getPosts();
+            
+            if (!posts) return;
+
+            if (posts.length === 0) {
+                app.innerHTML = `
+                    <div class="text-center py-20 text-cyan-600/50 font-mono">
+                        <svg class="mx-auto h-12 w-12 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-lg">[ WARNING: NO OBSERVATION DATA FOUND IN TARGET DIRECTORY ]</p>
+                    </div>`;
+                return;
+            }
+
+            // Structural layout housing search interface and results subcontainer
+            app.innerHTML = `
+                <div class="mb-8">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-cyan-500">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </span>
+                        <input type="text" id="search-input" placeholder="[ SEARCH OBSERVATION LOGS... ]" 
+                            class="w-full bg-slate-900/80 text-cyan-100 placeholder-cyan-700/60 border border-cyan-800/60 rounded-xl py-3.5 pl-12 pr-4 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 font-mono text-sm transition-all shadow-[0_0_15px_rgba(6,182,212,0.05)] focus:shadow-[0_0_20px_rgba(34,211,238,0.15)]">
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mt-3 px-1 font-mono text-xs">
+                        <label class="flex items-center gap-2 text-cyan-600/80 hover:text-cyan-500/90 cursor-pointer select-none uppercase tracking-wider transition-colors">
+                            <input type="checkbox" id="search-content-toggle" class="rounded bg-slate-950 border-cyan-800/60 text-cyan-500 focus:ring-cyan-500/50">
+                            Search full text (fetches post contents)
+                        </label>
+                        <span id="search-status" class="text-cyan-500/80 uppercase tracking-wider"></span>
+                    </div>
+                </div>
+                <div id="posts-list-container"></div>
+            `;
+
+            const searchInput = document.getElementById('search-input');
+            const contentToggle = document.getElementById('search-content-toggle');
+
+            // Restore search term and configuration from sessionStorage if available
+            const savedQuery = sessionStorage.getItem('search_query') || '';
+            const savedContentToggle = sessionStorage.getItem('search_content_toggle') === 'true';
+
+            searchInput.value = savedQuery;
+            contentToggle.checked = savedContentToggle;
+
+            // Trigger visual render with loaded cache
+            await filterAndRenderPosts(savedQuery, savedContentToggle);
+
+            // Register event listeners
+            searchInput.addEventListener('input', async (e) => {
+                const query = e.target.value;
+                sessionStorage.setItem('search_query', query);
+                await filterAndRenderPosts(query, contentToggle.checked);
+            });
+
+            contentToggle.addEventListener('change', async (e) => {
+                const checked = e.target.checked;
+                sessionStorage.setItem('search_content_toggle', checked ? 'true' : 'false');
+                await filterAndRenderPosts(searchInput.value, checked);
+            });
         }
 
         // Render a single post
@@ -261,12 +394,31 @@
             const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/docs/${CONFIG.postsDir}/${fileName}`;
             
             try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error('Post not found.');
+                // Check if markdown content is already in active memory cache or localStorage
+                const posts = await getPosts();
+                const matchedPost = posts ? posts.find(p => p.name === fileName) : null;
+                const cacheKey = matchedPost ? `content_${matchedPost.sha}` : null;
                 
-                const data = await response.json();
-                const rawRes = await fetch(data.download_url);
-                const markdown = await rawRes.text();
+                let markdown = '';
+                if (matchedPost && matchedPost.content) {
+                    markdown = matchedPost.content;
+                } else if (cacheKey && localStorage.getItem(cacheKey)) {
+                    markdown = localStorage.getItem(cacheKey);
+                    if (matchedPost) matchedPost.content = markdown; // Sync back to memory
+                } else {
+                    const response = await fetch(apiUrl);
+                    if (!response.ok) throw new Error('Post not found.');
+                    
+                    const data = await response.json();
+                    const rawRes = await fetch(data.download_url);
+                    markdown = await rawRes.text();
+
+                    // Feed cache registers
+                    if (matchedPost) {
+                        matchedPost.content = markdown;
+                        if (cacheKey) localStorage.setItem(cacheKey, markdown);
+                    }
+                }
 
                 // Convert Markdown to HTML and sanitize
                 const rawHtml = marked.parse(markdown);
