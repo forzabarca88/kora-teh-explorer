@@ -94,14 +94,15 @@
         // CONFIGURATION
         // ==========================================
         const CONFIG = {
-            owner: 'forzabarca88', // e.g. 'octocat'
-            repo: 'kora-teh-explorer',      // e.g. 'my-blog'
-            postsDir: 'posts'              // The directory containing your .md files
+            owner: 'forzabarca88',         // Fallback owner if running locally
+            repo: 'kora-teh-explorer',     // Fallback repo if running locally
+            postsDir: 'posts',             // The directory containing your .md files
+            branch: 'main'                 // Target branch for raw CDN file fetches
         };
 
-        // Auto-detect GitHub username and repo if hosted on Github Pages and config is left as default
+        // Auto-detect GitHub username and repo dynamically if hosted on GitHub Pages
         const isGithubPages = window.location.hostname.endsWith('.github.io');
-        if (CONFIG.owner === 'YOUR_GITHUB_USERNAME' && isGithubPages) {
+        if (isGithubPages) {
             CONFIG.owner = window.location.hostname.split('.')[0];
             const pathSegments = window.location.pathname.split('/').filter(Boolean);
             CONFIG.repo = pathSegments.length > 0 ? pathSegments[0] : `${CONFIG.owner}.github.io`;
@@ -134,7 +135,7 @@
             `;
         }
 
-        // Escape HTML for safe template literal insertions
+        // Escape HTML for safe insertion in template strings
         function escapeHTML(str) {
             return str
                 .replace(/&/g, '&amp;')
@@ -144,19 +145,19 @@
                 .replace(/'/g, '&#039;');
         }
 
-        // Remove Markdown tags, links, and styling to retrieve plain text
+        // Strip Markdown styling to extract search-friendly plain text
         function cleanMarkdown(md) {
             if (!md) return '';
             return md
                 .replace(/!\[.*?\]\(.*?\)/g, '') // strip images
-                .replace(/\[(.*?)\]\(.*?\)/g, '$1') // strip links, leaving text
+                .replace(/\[(.*?)\]\(.*?\)/g, '$1') // strip link structures, leaving title
                 .replace(/#{1,6}\s+/g, '') // strip headings
-                .replace(/[*_`~]/g, '') // strip styling indicators
-                .replace(/\n+/g, ' ') // convert multiple lines to simple spaces
+                .replace(/[*_`~]/g, '') // strip markdown format markers
+                .replace(/\n+/g, ' ') // collapse multi-lines
                 .trim();
         }
 
-        // Generate contextual highlight snippet around matched query
+        // Generate matching snippet with highlighted occurrences
         function getPreviewSnippet(content, query) {
             const plainText = cleanMarkdown(content);
             if (!plainText) return '';
@@ -171,7 +172,7 @@
                 return plainText.substring(0, 120) + (plainText.length > 120 ? '...' : '');
             }
 
-            // Extract window of text around the match
+            // Extract window of text surrounding search index match
             const start = Math.max(0, idx - 60);
             const end = Math.min(plainText.length, idx + cleanQuery.length + 60);
             const snippet = plainText.substring(start, end);
@@ -179,11 +180,9 @@
             const prefix = start > 0 ? '...' : '';
             const suffix = end < plainText.length ? '...' : '';
 
-            // Escape snippet HTML to prevent XSS injection
             const escapedSnippet = escapeHTML(snippet);
             const escapedQuery = escapeHTML(cleanQuery);
 
-            // Find match on the escaped version to safely insert formatting tags
             const escIdx = escapedSnippet.toLowerCase().indexOf(escapedQuery);
             if (escIdx !== -1) {
                 const queryLen = escapedQuery.length;
@@ -205,7 +204,7 @@
             
             try {
                 const response = await fetch(contentsUrl);
-                if (!response.ok) throw new Error('Directory not found or API limit reached.');
+                if (!response.ok) throw new Error('Directory structure not found or API limit reached.');
                 
                 const files = await response.json();
                 const mdFiles = files.filter(f => f.name.endsWith('.md'));
@@ -235,11 +234,10 @@
                         ...file,
                         title: formatTitle(file.name),
                         date: dateStr ? new Date(dateStr) : new Date(0),
-                        content: null // Placeholder for full text
+                        content: null // Holds file text content once indexed
                     };
                 }));
 
-                // Sort purely by date descending
                 cachedPosts = postsWithDates.sort((a, b) => b.date - a.date);
                 return cachedPosts;
 
@@ -255,7 +253,7 @@
             }
         }
 
-        // Fetch single post content for deep text search and save to cache
+        // Fetch single post content from the raw CDN to protect public API rate limits
         async function fetchPostContent(post) {
             if (post.content) return post.content;
             
@@ -267,11 +265,10 @@
             }
 
             try {
-                const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/docs/${CONFIG.postsDir}/${post.name}`;
-                const response = await fetch(apiUrl);
-                if (!response.ok) return '';
-                const data = await response.json();
-                const rawRes = await fetch(data.download_url);
+                // Construct raw URL to bypass GitHub API rate limitations entirely
+                const rawUrl = `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/docs/${CONFIG.postsDir}/${post.name}`;
+                const rawRes = await fetch(rawUrl);
+                if (!rawRes.ok) throw new Error('Failed to retrieve raw source.');
                 const markdown = await rawRes.text();
                 
                 post.content = markdown;
@@ -283,7 +280,7 @@
             }
         }
 
-        // Fetch and index all missing posts in the background
+        // Dynamically pre-load files in background
         async function preloadAllPostContents(posts) {
             const statusEl = document.getElementById('search-status');
             if (statusEl) {
@@ -304,7 +301,7 @@
             }
         }
 
-        // Render the filtered list based on user search queries
+        // Render the filtered list based on active search inputs
         async function filterAndRenderPosts(query) {
             const postsContainer = document.getElementById('posts-list-container');
             if (!postsContainer) return;
@@ -314,7 +311,6 @@
 
             const cleanQuery = query.toLowerCase().trim();
 
-            // Fallback: If user types before background preloader finishes, fetch remaining files inline
             if (cleanQuery !== '') {
                 const needsFetch = posts.some(p => !p.content);
                 if (needsFetch) {
@@ -352,7 +348,6 @@
                 return;
             }
 
-            // Group matched posts by Month Year
             const grouped = [];
             filtered.forEach(post => {
                 const d = post.date;
@@ -370,7 +365,6 @@
 
             let html = '<div class="space-y-6">';
             grouped.forEach(group => {
-                // Expand matching categories automatically if a query is active
                 const isOpen = cleanQuery !== '' ? 'open' : '';
                 html += `
                     <details ${isOpen} class="group border border-cyan-800/40 bg-slate-900/40 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.05)]">
@@ -386,7 +380,6 @@
                         ? post.date.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }) 
                         : '??/??/????';
                     
-                    // Show a contextual matching snippet if a query is active
                     let previewHtml = '';
                     if (cleanQuery !== '') {
                         const snippet = getPreviewSnippet(post.content, cleanQuery);
@@ -434,7 +427,6 @@
                 return;
             }
 
-            // Outer interface structure housing search container
             app.innerHTML = `
                 <div class="mb-8">
                     <div class="relative">
@@ -455,17 +447,15 @@
 
             const searchInput = document.getElementById('search-input');
 
-            // Restore search term from sessionStorage
+            // Restore search query if returned from a single post view
             const savedQuery = sessionStorage.getItem('search_query') || '';
             searchInput.value = savedQuery;
 
-            // Trigger dynamic render
             await filterAndRenderPosts(savedQuery);
 
-            // Preload contents asynchronously so database is hot for immediate queries
+            // Preload contents in background using rate-limit free raw links
             preloadAllPostContents(posts);
 
-            // Register input event listener
             searchInput.addEventListener('input', async (e) => {
                 const query = e.target.value;
                 sessionStorage.setItem('search_query', query);
@@ -477,10 +467,8 @@
         async function renderPost(fileName) {
             showLoading();
             
-            const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/docs/${CONFIG.postsDir}/${fileName}`;
-            
             try {
-                // Utilize existing caches to load the target file instantly
+                // Check memory or localStorage for existing cache matches
                 const posts = await getPosts();
                 const matchedPost = posts ? posts.find(p => p.name === fileName) : null;
                 const cacheKey = matchedPost ? `content_${matchedPost.sha}` : null;
@@ -492,14 +480,12 @@
                     markdown = localStorage.getItem(cacheKey);
                     if (matchedPost) matchedPost.content = markdown; // Sync back to memory
                 } else {
-                    const response = await fetch(apiUrl);
-                    if (!response.ok) throw new Error('Post not found.');
-                    
-                    const data = await response.json();
-                    const rawRes = await fetch(data.download_url);
+                    // Fetch directly from the CDN rather than the raw download URL endpoint
+                    const rawUrl = `https://raw.githubusercontent.com/${CONFIG.owner}/${CONFIG.repo}/${CONFIG.branch}/docs/${CONFIG.postsDir}/${fileName}`;
+                    const rawRes = await fetch(rawUrl);
+                    if (!rawRes.ok) throw new Error('Post not found.');
                     markdown = await rawRes.text();
 
-                    // Update memory and disk cache registers
                     if (matchedPost) {
                         matchedPost.content = markdown;
                         if (cacheKey) localStorage.setItem(cacheKey, markdown);
