@@ -1,0 +1,65 @@
+name: Generate Posts Index
+
+on:
+  push:
+    paths:
+      - 'docs/posts/*.md'
+  workflow_dispatch: # Allows you to trigger this manually from the Actions tab
+
+permissions:
+  contents: write # Grants permission to commit posts.json back to your repo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetches full git history so dates can be extracted correctly
+
+      - name: Generate posts.json
+        run: |
+          cd docs/posts
+          echo "Generating posts.json..."
+          
+          # Initialize JSON array
+          echo "[" > posts.json
+          
+          first=true
+          for file in *.md; do
+            if [ "$file" = "*.md" ]; then continue; fi
+            
+            # Format title (replace hyphens/underscores, capitalize words)
+            title=$(echo "$file" | sed 's/\.md$//' | sed 'y/_-/  /' | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1')
+            
+            # Extract actual Git commit date for the file
+            date_str=$(git log -1 --format="%cI" -- "$file")
+            
+            # Fallback to current time if the file is new and uncommitted
+            if [ -z "$date_str" ]; then
+              date_str=$(date -Iseconds)
+            fi
+            
+            if [ "$first" = true ]; then
+              first=false
+            else
+              echo "," >> posts.json
+            fi
+            
+            echo "  {" >> posts.json
+            echo "    \"name\": \"$file\"," >> posts.json
+            echo "    \"title\": \"$title\"," >> posts.json
+            echo "    \"date\": \"$date_str\"" >> posts.json
+            echo "  }" >> posts.json
+          done
+          
+          echo "]" >> posts.json
+          cat posts.json
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add docs/posts/posts.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: auto-generate posts.json index" && git push)
