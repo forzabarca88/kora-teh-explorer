@@ -30,8 +30,13 @@ jobs:
           for file in *.md; do
             if [ "$file" = "*.md" ]; then continue; fi
             
-            # Format title (replace hyphens/underscores, capitalize words)
-            title=$(echo "$file" | sed 's/\.md$//' | sed 'y/_-/  /' | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1')
+            # Extract actual title from the first H1 heading in the markdown file
+            title=$(grep -m1 '^# ' "$file" | sed 's/^# *//' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            
+            # Fallback to filename-derived title if no H1 heading found
+            if [ -z "$title" ]; then
+              title=$(echo "$file" | sed 's/\.md$//' | sed 'y/_-/  /' | awk '{for(i=1;i<=NF;i++)sub(/./,toupper(substr($i,1,1)),$i)}1')
+            fi
             
             # Extract actual Git commit date for the file
             date_str=$(git log -1 --format="%cI" -- "$file")
