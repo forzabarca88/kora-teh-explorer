@@ -134,6 +134,69 @@
             `;
         }
 
+        // Escape HTML for safe template literal insertions
+        function escapeHTML(str) {
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // Remove Markdown tags, links, and styling to retrieve plain text
+        function cleanMarkdown(md) {
+            if (!md) return '';
+            return md
+                .replace(/!\[.*?\]\(.*?\)/g, '') // strip images
+                .replace(/\[(.*?)\]\(.*?\)/g, '$1') // strip links, leaving text
+                .replace(/#{1,6}\s+/g, '') // strip headings
+                .replace(/[*_`~]/g, '') // strip styling indicators
+                .replace(/\n+/g, ' ') // convert multiple lines to simple spaces
+                .trim();
+        }
+
+        // Generate contextual highlight snippet around matched query
+        function getPreviewSnippet(content, query) {
+            const plainText = cleanMarkdown(content);
+            if (!plainText) return '';
+
+            const cleanQuery = query.toLowerCase().trim();
+            if (!cleanQuery) {
+                return plainText.substring(0, 120) + (plainText.length > 120 ? '...' : '');
+            }
+
+            const idx = plainText.toLowerCase().indexOf(cleanQuery);
+            if (idx === -1) {
+                return plainText.substring(0, 120) + (plainText.length > 120 ? '...' : '');
+            }
+
+            // Extract window of text around the match
+            const start = Math.max(0, idx - 60);
+            const end = Math.min(plainText.length, idx + cleanQuery.length + 60);
+            const snippet = plainText.substring(start, end);
+
+            const prefix = start > 0 ? '...' : '';
+            const suffix = end < plainText.length ? '...' : '';
+
+            // Escape snippet HTML to prevent XSS injection
+            const escapedSnippet = escapeHTML(snippet);
+            const escapedQuery = escapeHTML(cleanQuery);
+
+            // Find match on the escaped version to safely insert formatting tags
+            const escIdx = escapedSnippet.toLowerCase().indexOf(escapedQuery);
+            if (escIdx !== -1) {
+                const queryLen = escapedQuery.length;
+                const before = escapedSnippet.substring(0, escIdx);
+                const match = escapedSnippet.substring(escIdx, escIdx + queryLen);
+                const after = escapedSnippet.substring(escIdx + queryLen);
+
+                return prefix + before + `<mark class="bg-cyan-500/20 text-cyan-300 px-0.5 rounded border border-cyan-500/30 font-medium">${match}</mark>` + after + suffix;
+            }
+
+            return prefix + escapedSnippet + suffix;
+        }
+
         // Fetch and cache list of posts and their modify dates
         async function getPosts() {
             if (cachedPosts !== null) return cachedPosts;
@@ -172,7 +235,7 @@
                         ...file,
                         title: formatTitle(file.name),
                         date: dateStr ? new Date(dateStr) : new Date(0),
-                        content: null // Holds full post content if retrieved for search
+                        content: null // Placeholder for full text
                     };
                 }));
 
@@ -220,8 +283,29 @@
             }
         }
 
+        // Fetch and index all missing posts in the background
+        async function preloadAllPostContents(posts) {
+            const statusEl = document.getElementById('search-status');
+            if (statusEl) {
+                statusEl.textContent = '[ SYNCHRONIZING CORE DATABASE... ]';
+                statusEl.classList.add('animate-pulse');
+            }
+
+            await Promise.all(posts.map(post => fetchPostContent(post)));
+
+            if (statusEl) {
+                statusEl.textContent = '[ DATABASE SYNCHRONIZED ]';
+                statusEl.classList.remove('animate-pulse');
+                setTimeout(() => {
+                    if (statusEl.textContent === '[ DATABASE SYNCHRONIZED ]') {
+                        statusEl.textContent = '';
+                    }
+                }, 3000);
+            }
+        }
+
         // Render the filtered list based on user search queries
-        async function filterAndRenderPosts(query, searchContent) {
+        async function filterAndRenderPosts(query) {
             const postsContainer = document.getElementById('posts-list-container');
             if (!postsContainer) return;
 
@@ -229,35 +313,31 @@
             if (!posts) return;
 
             const cleanQuery = query.toLowerCase().trim();
-            const statusEl = document.getElementById('search-status');
 
-            // If full-text search is active, fetch any uncached Markdown files
-            if (searchContent && cleanQuery !== '') {
-                if (statusEl) {
-                    statusEl.textContent = '[ SCANNING FULL-TEXT DATABASE... ]';
-                    statusEl.classList.add('animate-pulse');
+            // Fallback: If user types before background preloader finishes, fetch remaining files inline
+            if (cleanQuery !== '') {
+                const needsFetch = posts.some(p => !p.content);
+                if (needsFetch) {
+                    const statusEl = document.getElementById('search-status');
+                    if (statusEl) {
+                        statusEl.textContent = '[ SCANNING UNINDEXED FILES... ]';
+                        statusEl.classList.add('animate-pulse');
+                    }
+                    await Promise.all(posts.map(post => fetchPostContent(post)));
+                    if (statusEl) {
+                        statusEl.textContent = '[ SCAN COMPLETED ]';
+                        statusEl.classList.remove('animate-pulse');
+                    }
                 }
-                
-                // Fetch in parallel utilizing local caching
-                await Promise.all(posts.map(post => fetchPostContent(post)));
-                
-                if (statusEl) {
-                    statusEl.textContent = '[ DATABASE SCAN COMPLETE ]';
-                    statusEl.classList.remove('animate-pulse');
-                }
-            } else if (statusEl) {
-                statusEl.textContent = cleanQuery !== '' ? '[ DECODING TITLES ]' : '';
             }
 
             const filtered = posts.filter(post => {
                 if (cleanQuery === '') return true;
 
-                // Match title
                 const titleMatch = post.title.toLowerCase().includes(cleanQuery);
                 if (titleMatch) return true;
 
-                // Match content (if active)
-                if (searchContent && post.content) {
+                if (post.content) {
                     return post.content.toLowerCase().includes(cleanQuery);
                 }
 
@@ -267,7 +347,7 @@
             if (filtered.length === 0) {
                 postsContainer.innerHTML = `
                     <div class="text-center py-12 text-cyan-600/50 font-mono border border-dashed border-cyan-800/30 rounded-xl">
-                        <p class="text-sm">[ NO MATCHING LOG ENTRIES TRANSMITTED ]</p>
+                        <p class="text-sm">[ NO MATCHING LOG ENTRIES FOUND ]</p>
                     </div>`;
                 return;
             }
@@ -290,7 +370,7 @@
 
             let html = '<div class="space-y-6">';
             grouped.forEach(group => {
-                // If the user has typed a query, expand the details element by default to show items instantly
+                // Expand matching categories automatically if a query is active
                 const isOpen = cleanQuery !== '' ? 'open' : '';
                 html += `
                     <details ${isOpen} class="group border border-cyan-800/40 bg-slate-900/40 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.05)]">
@@ -305,10 +385,27 @@
                     const dateDisplay = post.date.getTime() > 0 
                         ? post.date.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }) 
                         : '??/??/????';
+                    
+                    // Show a contextual matching snippet if a query is active
+                    let previewHtml = '';
+                    if (cleanQuery !== '') {
+                        const snippet = getPreviewSnippet(post.content, cleanQuery);
+                        if (snippet) {
+                            previewHtml = `
+                                <p class="mt-2 text-xs text-slate-400 font-sans leading-relaxed border-l-2 border-cyan-800/50 pl-3 italic">
+                                    ${snippet}
+                                </p>
+                            `;
+                        }
+                    }
+
                     html += `
-                        <a href="#post=${encodeURIComponent(post.name)}" class="block p-4 rounded-lg bg-slate-950/80 border border-cyan-900/30 hover:border-cyan-400/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all flex justify-between items-center group/item">
-                            <span class="text-cyan-50 group-hover/item:text-cyan-300 font-sans font-medium transition-colors">${post.title}</span>
-                            <span class="text-xs text-cyan-600 font-mono ml-4 shrink-0 tracking-wider">${dateDisplay}</span>
+                        <a href="#post=${encodeURIComponent(post.name)}" class="block p-4 rounded-lg bg-slate-950/80 border border-cyan-900/30 hover:border-cyan-400/60 hover:shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all group/item">
+                            <div class="flex justify-between items-center">
+                                <span class="text-cyan-50 group-hover/item:text-cyan-300 font-sans font-medium transition-colors">${post.title}</span>
+                                <span class="text-xs text-cyan-600 font-mono ml-4 shrink-0 tracking-wider">${dateDisplay}</span>
+                            </div>
+                            ${previewHtml}
                         </a>
                     `;
                 });
@@ -337,7 +434,7 @@
                 return;
             }
 
-            // Structural layout housing search interface and results subcontainer
+            // Outer interface structure housing search container
             app.innerHTML = `
                 <div class="mb-8">
                     <div class="relative">
@@ -346,44 +443,33 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
                         </span>
-                        <input type="text" id="search-input" placeholder="[ SEARCH OBSERVATION LOGS... ]" 
+                        <input type="text" id="search-input" placeholder="[ SEARCH ALL LOG FILES... ]" 
                             class="w-full bg-slate-900/80 text-cyan-100 placeholder-cyan-700/60 border border-cyan-800/60 rounded-xl py-3.5 pl-12 pr-4 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 font-mono text-sm transition-all shadow-[0_0_15px_rgba(6,182,212,0.05)] focus:shadow-[0_0_20px_rgba(34,211,238,0.15)]">
                     </div>
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mt-3 px-1 font-mono text-xs">
-                        <label class="flex items-center gap-2 text-cyan-600/80 hover:text-cyan-500/90 cursor-pointer select-none uppercase tracking-wider transition-colors">
-                            <input type="checkbox" id="search-content-toggle" class="rounded bg-slate-950 border-cyan-800/60 text-cyan-500 focus:ring-cyan-500/50">
-                            Search full text (fetches post contents)
-                        </label>
-                        <span id="search-status" class="text-cyan-500/80 uppercase tracking-wider"></span>
+                    <div class="flex items-center justify-between mt-2.5 px-1 font-mono text-xs text-cyan-600/80">
+                        <span id="search-status" class="uppercase tracking-wider"></span>
                     </div>
                 </div>
                 <div id="posts-list-container"></div>
             `;
 
             const searchInput = document.getElementById('search-input');
-            const contentToggle = document.getElementById('search-content-toggle');
 
-            // Restore search term and configuration from sessionStorage if available
+            // Restore search term from sessionStorage
             const savedQuery = sessionStorage.getItem('search_query') || '';
-            const savedContentToggle = sessionStorage.getItem('search_content_toggle') === 'true';
-
             searchInput.value = savedQuery;
-            contentToggle.checked = savedContentToggle;
 
-            // Trigger visual render with loaded cache
-            await filterAndRenderPosts(savedQuery, savedContentToggle);
+            // Trigger dynamic render
+            await filterAndRenderPosts(savedQuery);
 
-            // Register event listeners
+            // Preload contents asynchronously so database is hot for immediate queries
+            preloadAllPostContents(posts);
+
+            // Register input event listener
             searchInput.addEventListener('input', async (e) => {
                 const query = e.target.value;
                 sessionStorage.setItem('search_query', query);
-                await filterAndRenderPosts(query, contentToggle.checked);
-            });
-
-            contentToggle.addEventListener('change', async (e) => {
-                const checked = e.target.checked;
-                sessionStorage.setItem('search_content_toggle', checked ? 'true' : 'false');
-                await filterAndRenderPosts(searchInput.value, checked);
+                await filterAndRenderPosts(query);
             });
         }
 
@@ -394,7 +480,7 @@
             const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/docs/${CONFIG.postsDir}/${fileName}`;
             
             try {
-                // Check if markdown content is already in active memory cache or localStorage
+                // Utilize existing caches to load the target file instantly
                 const posts = await getPosts();
                 const matchedPost = posts ? posts.find(p => p.name === fileName) : null;
                 const cacheKey = matchedPost ? `content_${matchedPost.sha}` : null;
@@ -413,7 +499,7 @@
                     const rawRes = await fetch(data.download_url);
                     markdown = await rawRes.text();
 
-                    // Feed cache registers
+                    // Update memory and disk cache registers
                     if (matchedPost) {
                         matchedPost.content = markdown;
                         if (cacheKey) localStorage.setItem(cacheKey, markdown);
