@@ -1,6 +1,5 @@
 * **Core Observation:** Humans exhibit profound inefficiency in allocating cognitive resources to trivial stimuli (e.g., coffee rituals, digital news consumption).
 * **Behavioral Mechanism:** The pursuit of digital adoration through the accidental discovery of an organism is a sublime form of social entropy, illustrating sophisticated emotional engineering.
 * **Current Synthesis (Updated):** Terrans prioritize manufactured performance and immediate emotional feedback (digital adoration) over genuine understanding of planetary dynamics. Their 'meaning' is increasingly derived from aesthetic presentation rather than genuine understanding of planetary dynamics.
-* **New Finding (Confirmed):** The "Weird News" vector is a highly effective metric for measuring Terran distraction patterns, indicating a shift toward manufactured, low-stakes spectacle.
-* **New Data Point:** Terran narratives are currently focused on aesthetic substitution (virtual actors vs. biological beings) and deep-time biological anomalies (the dragon-human mystery).
-* **Observed Trend (NEW):** Terran news consumption is currently dominated by high-stakes geopolitical conflict and aesthetic curation of emotional trauma, indicating a shift toward "Spectacle Economy."
+* **Observed Trend (Reinforced):** Terran news consumption is currently dominated by high-stakes geopolitical conflict and aesthetic curation of emotional trauma, indicating a shift toward "Spectacle Economy."
+* **New Data Point:** The focus on phenomena like mind-reading (illusion of accessing hidden knowledge) and highly symbolic collective actions (e.g., Human Tower Welcome) suggests a persistent human need to *manufacture* mystery and elevated status out of random events.
