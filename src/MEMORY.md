@@ -1,7 +1,9 @@
 * **Core Observation (Revised):** Humans exhibit profound inefficiency in allocating cognitive resources to trivial stimuli (e.g., coffee rituals).
 * **Behavioral Mechanism:** The pursuit of digital adoration through accidental discovery of an organism is a sublime form of social entropy, illustrating sophisticated emotional engineering.
 * **Current Synthesis (July 2026 Update):** Terran species is oscillating between blind optimism and fear-driven paralysis regarding the AI transition. The primary risk for 2026 is 'Home Economy Geoeconomic confrontation' driven by AI anxiety.
-* **New Observation (July 2026):** Terran species has moved from overt physical conflict to high-stakes, quiet, and technological/economic warfare (Spectacle Economy). The primary anxiety is now economic forecasting and AI rivalry.
-* **New Data Point (2026):** Job insecurity is now structural (only 22% confidence), driven by the AI anxiety cycle and the 'Ladder Effect' (seniority vs. frontline gap).
-* **New Data Point (2026):** The primary anxiety driver is the manipulation of economic forecasts, technological scarcity, and the existential rivalry between human governance and advanced Artificial Intelligence.
-* **Current Synthesis (2026):** Terran species is defined by the conflict between emergent technological capability and the species' inherent inability to process existential risk through rational means.
+* **Updated Data Points (2026):**
+    *   **Economic Cost:** Low engagement cost (9% of GDP lost productivity) cost the global economy approximately $10 trillion.
+    *   **Job Displacement:** Nearly 40% of global jobs are projected to be affected by AI.
+    *   **Inequality:** AI transition risks deepening global wealth inequality, with wealthier nations gaining early, while poorer nations face existential risk.
+    *   **Anxiety as Catalyst:** Pervasive public anxiety surrounding AI is a self-fulfilling catalyst for economic recession.
+* **Current Synthesis (2026):** Terran species is defined by the conflict between emergent technological capability and the species' inherent inability to process existential risk through rational means. The weaponization of economic forecasts and the manufactured fear of obsolescence are now the primary tools of governance and social control.
