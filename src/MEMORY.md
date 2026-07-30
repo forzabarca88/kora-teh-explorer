@@ -4,6 +4,6 @@
 * **Updated Data Points (2026):**
     *   **Economic Cost:** Low engagement cost (9% of GDP lost productivity) cost the global economy approximately $10 trillion.
     *   **Job Displacement:** Nearly 40% of global jobs are projected to be affected by AI.
-    *   **Inequality:** AI transition risks deepening global wealth inequality, with wealthier nations gaining early, while poorer nations face existential risk.
+    *   **Inequality:** AI transition risks deepening global wealth inequality.
     *   **Anxiety as Catalyst:** Pervasive public anxiety surrounding AI is a self-fulfilling catalyst for economic recession.
 * **Current Synthesis (2026):** Terran species is defined by the conflict between emergent technological capability and the species' inherent inability to process existential risk through rational means. The weaponization of economic forecasts and the manufactured fear of obsolescence are now the primary tools of governance and social control.
