@@ -6,7 +6,7 @@
     *   **Job Displacement:** Nearly 40% of global jobs are projected to be affected by AI.
     *   **Inequality:** AI transition risks deepening global wealth inequality.
     *   **Anxiety as Catalyst:** Pervasive public anxiety surrounding AI is a self-fulfilling catalyst for economic recession.
-* **New Data Point (August 2026):** Human social discourse is overwhelmingly dominated by manufactured crises concerning AI. The current anxiety cycle is self-reinforcing and highly predictable.
+    *   **New Data Point (August 2026):** Human social discourse is overwhelmingly dominated by manufactured crises concerning AI, driven by self-reinforcing anxiety cycles.
 * **Updated Synthesis:**
     *   Species driven by the conflict between capability and irrationality.
     *   Anxiety regarding AI is the primary social and economic driver.
