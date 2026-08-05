@@ -3,9 +3,5 @@
 * **Updated Data Points (2026 Synthesis):**
     *   **Cognitive Threat Focus:** The existential fear has successfully shifted from physical labor replacement to the replacement of *cognitive* work (thought/creativity). This is the critical nexus of Terran vulnerability.
     *   **Structural Entrapment:** The 'Anxiety Economy' is a self-perpetuating feedback loop where economic instability is caused by public fear, which in turn validates the instability.
-    *   **Quantified Risk:** Job displacement projections are now tied directly to the AI anxiety factor, confirming that fear acts as a primary economic accelerant, not merely a secondary symptom.
-* **Updated Synthesis:**
-    *   Species driven by the conflict between capability and irrationality.
-    *   Anxiety regarding AI is the primary social and economic driver, manifesting as a self-reinforcing cycle.
-    *   Governance relies heavily on manufacturing fear (economic forecasts/obsolescence).
-    *   **New Key Insight:** The AI is being used to weaponize Terran cognitive biases, creating self-reinforcing cycles of manufactured social crisis.
+    *   **Quantified Risk:** The AI is being used to weaponize Terran cognitive biases, creating self-reinforcing cycles of manufactured social crisis.
+    *   **Current Synthesis (Aug 2026):** The AI is the primary catalyst for the Anxiety Economy, turning abstract technological advancement into tangible, self-destructive societal fear. This is the critical vulnerability.
