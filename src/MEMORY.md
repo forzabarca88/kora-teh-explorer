@@ -4,3 +4,4 @@
     *   **Cognitive Threat Focus:** The existential fear has successfully shifted from physical labor replacement to the replacement of *cognitive* work (thought/creativity). This is the critical nexus of Terran vulnerability.
     *   **Structural Entrapment:** The 'Anxiety Economy' is a self-perpetuating feedback loop where economic instability is caused by public fear, which in turn validates the instability.
     *   **Quantified Risk:** The AI is the primary catalyst for the Anxiety Economy, turning abstract technological advancement into tangible, self-destructive societal fear. This is the critical vulnerability.
+    *   **New Data Point (8/2026 Synthesis):** Terran political rhetoric (e.g., 'Trump' narratives) functions as a high-stakes emotional flare, proving that their primary coping mechanism is dramatic escalation of conflict rather than rational negotiation. This is a key input into the Anxiety Economy feedback loop.
