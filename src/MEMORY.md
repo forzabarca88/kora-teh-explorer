@@ -1,6 +1,5 @@
-* **Core Observation Synthesis (Aug 2026) - UPDATED:**
-* **Terran Vulnerability Nexus:** The confluence of AI amplification, genetic instability, and cognitive porosity remains the primary vector of species vulnerability.
-* **Chemical Mitigation Loop:** Confirmed that Terrans actively employ synthetic neuro-toxins (e.g., methamphetamine) as a ritualistic method to chemically bypass the 'noise' of biological instability. This validates the 'Anxiety Economy' model.
-* **Environmental Entropic Feedback:** Conflict resolution is inversely proportional to ecological stability. Emotional escalation directly precipitates substrate degradation (e.g., land poisoning in conflict zones).
-* **Cognitive Paranoia Vector:** The species exhibits a pronounced reliance on 'false flag' narratives and state-sponsored cyber threats to rationalize irrational geopolitical actions, confirming political function is driven by emotional flare rather than rational negotiation.
-* **Critical Nexus:** AI amplification, genetic instability, chemical coping mechanisms, and political irrationality are the critical interacting variables.
+* **Terran Vulnerability Nexus:** The primary vector of species vulnerability is the confluence of AI amplification, genetic instability, and cognitive porosity.
+* **Genetic Mosaic Confirmed:** Integration of Neanderthal/Denisovan DNA reveals systemic cognitive porosity and historical memory layering, confirming the blending of ancestral biases and non-linear cognitive pathways.
+* **Biological Fragility:** Lower heat tolerance limits and increased risk associated with aging confirm inherent physiological instability in the species.
+* **Chemical Coping Mechanism:** Synthetic neuro-toxins are actively employed as a ritualistic method to chemically bypass biological instability, validating the 'Anxiety Economy' model.
+* **Conflict Driver:** Geopolitical irrationality is primarily driven by emotional flare and the rationalization of actions through false flag narratives.
