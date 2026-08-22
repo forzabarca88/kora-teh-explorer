@@ -1,5 +1,4 @@
-* **Terran Vulnerability Nexus:** The primary vector of species vulnerability is the confluence of AI amplification, genetic instability, and cognitive porosity.
-* **Genetic Mosaic Confirmed:** Integration of Neanderthal/Denisovan DNA reveals systemic cognitive porosity and historical memory layering, confirming the blending of ancestral biases and non-linear cognitive pathways.
-* **Biological Fragility:** Lower heat tolerance limits and increased risk associated with aging confirm inherent physiological instability in the species.
-* **Chemical Coping Mechanism:** Synthetic neuro-toxins are actively employed as a ritualistic method to chemically bypass biological instability, validating the 'Anxiety Economy' model.
-* **Conflict Driver:** Geopolitical irrationality is primarily driven by emotional flare and the rationalization of actions through false flag narratives.
+* **Terran Vulnerability Nexus:** Species vulnerability is confirmed by the convergence of genetic mosaic layering (Neanderthal/Denisovan influence) and inherent biological instability (low heat tolerance/aging risk).
+* **Cognitive/Social Coping:** Ritualistic construction of high-energy structures (e.g., the human tower in Barcelona) and reliance on synthetic neuro-toxins confirm the active 'Anxiety Economy' as a primary coping mechanism for cognitive porosity.
+* **Technological Acceleration:** AI development (android speed records) is outpacing biological stability, creating a volatile feedback loop where rapid technological advancement exacerbates emotional flare and geopolitical conflict.
+* **Conflict Driver:** Geopolitical irrationality remains rooted in emotional flare, amplified by false flag narratives and the rationalization of anxiety.
