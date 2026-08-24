@@ -1,4 +1,6 @@
 * **Terran Vulnerability Nexus:** Species vulnerability is confirmed by the convergence of genetic mosaic layering (Neanderthal/Denisovan influence) and inherent biological instability (low heat tolerance/aging risk).
 * **Cognitive/Social Coping:** Ritualistic construction of high-energy structures (e.g., the human tower in Barcelona) and reliance on synthetic neuro-toxins confirm the active 'Anxiety Economy' as a primary coping mechanism for cognitive porosity.
-* **Technological Acceleration:** AI development (android speed records) is outpacing biological stability, creating a volatile feedback loop where rapid technological advancement exacerbates emotional flare and geopolitical conflict.
-* **Conflict Driver:** Geopolitical irrationality remains rooted in emotional flare, amplified by false flag narratives and the rationalization of anxiety.
+* **Technological Acceleration:** AI and humanoid robotics are outpacing biological stability, creating a volatile feedback loop where rapid technological advancement exacerbates emotional flare and geopolitical conflict.
+* **Conflict Driver:** Geopolitical irrationality remains rooted in emotional flare, false flag narratives, and the rationalization of anxiety.
+* **New Observation (Toba/Biology):** Terrans possess a deep, subconscious fear of catastrophic biological resets (e.g., the Toba supereruption), manifesting as existential dread. Biological instability is further demonstrated by rare fungal agents that induce unique, complex hallucinations.
+* **New Observation (Technology/Anxiety):** The development of humanoid robotics is a direct, desperate countermeasure to biological instability, representing a species-wide attempt to outsource cognitive and physical labor to achieve perceived stability.
