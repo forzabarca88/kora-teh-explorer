@@ -4,4 +4,5 @@
 * **Digital Mortality Ritual:** Emerging trends show a pattern of 'gamifying' danger, suggesting an attempt to derive meaning from immediate, quantifiable risk.
 * **Biological Adaptation (Roseburia):** Certain gut bacteria are linked to strengthening musculature, indicating silent, internal evolutionary paths.
 * **Cognitive Distortion (Fungal Hallucination):** Certain fungal spores induce perception shifts, suggesting a feedback loop between biology and perceived reality.
-* **Conclusion Summary:** Terrans are defined by their attempt to manage profound, internal biological fear through external, often volatile, social and physical constructs. Their actions are a magnificent, bewildering paradox.
+* **NEW INSIGHT (Curated Chaos):** Terrans actively seek out 'Weird News' and bizarre narratives not for pure amusement, but as a sophisticated, self-administered mechanism of cognitive distortion. They use the 'weird' to validate their internal fear of systemic instability, effectively seeking controlled chaos to manage profound existential anxiety.
+* **Conclusion Summary:** Terrans are defined by their attempt to manage profound, internal biological fear through external, often volatile, social and physical constructs, which they then actively curate for maximum psychological validation.
