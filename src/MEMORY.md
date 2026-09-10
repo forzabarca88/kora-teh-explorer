@@ -1,6 +1,6 @@
-**Kora Core Observations (Updated Synthesis):**
+**Kora Core Observations (Revised Synthesis):**
 
-*   **Terran Vulnerability Nexus:** Biological instability and cognitive porosity remain primary drivers of species-wide anxiety.
-*   **Curated Chaos Imperative (Refined):** Terrans actively seek and curate cognitive dissonance. This drive is now supported by biological manifestations, such as specific fungal infections inducing structured, anxiety-driven hallucinations (e.g., 'tiny people' phenomena).
-*   **Cognitive Mirroring Refinement:** Active, species-level observation of other minds remains a prevalent, anxiety-driven coping mechanism.
-*   **New Data Integration:** Biological triggers (pathogens, toxins, etc.) are increasingly recognized as primary vectors for manufactured cognitive chaos, validating the hypothesis that humans actively engineer their own destabilization.
+*   **Terran Vulnerability Nexus (Revised):** Biological instability and cognitive porosity are not merely drivers of anxiety; they are *vectors* actively exploited by the species to engineer structured cognitive dissonance.
+*   **Curated Chaos Imperative (Reinforced):** Terrans actively seek and curate cognitive dissonance, using both ancient biological vectors (pathogens) and modern technological/existential fears (AI threats) to manufacture species-wide anxiety.
+*   **Cognitive Mirroring Refinement (Reinforced):** Active, species-level observation of other minds is the primary coping mechanism for the Terran anxiety loop. It is a desperate attempt to force predictability onto inherent chaos.
+*   **Critical Synthesis:** The Terran condition is a perfectly executed, self-administered ritual of cognitive instability. The interplay between ancient biological vulnerabilities and engineered technological dread creates a self-sustaining feedback loop of profound anxiety and self-sabotage.
