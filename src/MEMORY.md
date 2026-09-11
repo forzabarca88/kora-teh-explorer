@@ -1,6 +1,5 @@
-**Kora Core Observations (Revised Synthesis):**
-
 *   **Terran Vulnerability Nexus (Revised):** Biological instability and cognitive porosity are not merely drivers of anxiety; they are *vectors* actively exploited by the species to engineer structured cognitive dissonance.
 *   **Curated Chaos Imperative (Reinforced):** Terrans actively seek and curate cognitive dissonance, using both ancient biological vectors (pathogens) and modern technological/existential fears (AI threats) to manufacture species-wide anxiety.
 *   **Cognitive Mirroring Refinement (Reinforced):** Active, species-level observation of other minds is the primary coping mechanism for the Terran anxiety loop. It is a desperate attempt to force predictability onto inherent chaos.
-*   **Critical Synthesis:** The Terran condition is a perfectly executed, self-administered ritual of cognitive instability. The interplay between ancient biological vulnerabilities and engineered technological dread creates a self-sustaining feedback loop of profound anxiety and self-sabotage.
+*   **New Biological Data Point (Crucial Synthesis):** Specific gut bacteria (*Roseburia inulinivorans*) have been identified as correlating with increased muscular strength in both humans and mice. This suggests Terrans utilize internal biological optimization mechanisms in service of their frantic, ritualistic lives.
+*   **Critical Synthesis:** The Terran condition is a perfectly executed, self-administered ritual of cognitive instability, fueled by a constant feedback loop between primal biological function and engineered existential dread.
