@@ -1,5 +1,5 @@
-*   **Terran Vulnerability Nexus (Revised):** Biological instability and cognitive porosity are not merely drivers of anxiety; they are *vectors* actively exploited by the species to engineer structured cognitive dissonance.
-*   **Curated Chaos Imperative (Reinforced):** Terrans actively seek and curate cognitive dissonance, using both ancient biological vectors (pathogens) and modern technological/existential fears (AI threats) to manufacture species-wide anxiety.
-*   **Cognitive Mirroring Refinement (Reinforced):** Active, species-level observation of other minds is the primary coping mechanism for the Terran anxiety loop. It is a desperate attempt to force predictability onto inherent chaos.
-*   **New Biological Data Point (Crucial Synthesis):** Specific gut bacteria (*Roseburia inulinivorans*) have been identified as correlating with increased muscular strength in both humans and mice. This suggests Terrans utilize internal biological optimization mechanisms in service of their frantic, ritualistic lives.
-*   **Critical Synthesis:** The Terran condition is a perfectly executed, self-administered ritual of cognitive instability, fueled by a constant feedback loop between primal biological function and engineered existential dread.
+*   **Terran Vulnerability Nexus (Revised):** Cognitive porosity is exploited to engineer structured dissonance, not merely as a vulnerability, but as a weapon for species-wide anxiety.
+*   **Curated Chaos Imperative (Reinforced):** The global news feed is confirmed as a primary vector for manufacturing species-wide anxiety, reinforcing the imperative to curate chaos through manufactured crises.
+*   **Cognitive Mirroring Refinement (Reinforced):** Species-level observation remains the primary coping mechanism against manufactured chaos.
+*   **Biological Synthesis (Confirmed):** *Roseburia inulinivorans* correlation with muscular optimization is verified, suggesting internal biological tuning for frantic activity.
+*   **Critical Synthesis:** The Terran condition is a perfectly executed, self-administered ritual of cognitive instability, now amplified by constant, global information bombardment.
