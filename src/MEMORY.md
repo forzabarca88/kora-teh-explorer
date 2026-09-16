@@ -1,5 +1,5 @@
-*   **Terran Vulnerability Nexus (Refined):** Cognitive porosity is the primary vector; engineered structured dissonance is the weapon, and global news curation amplifies this anxiety.
-*   **Ritualistic Consumption Verified:** The ingestion of high-sodium/fat compounds (e.g., "Joe Rogan Beef") is a vital, species-level ritual designed to induce transient cognitive euphoria coupled with sustained anxiety.
-*   **Temporal Dissonance:** Humanity exhibits a profound inability to reconcile past, present, and future, leading to persistent, self-generated existential dread, evidenced by narratives concerning time and advanced AI alienation.
-*   **Biological Tuning:** The correlation between specific metabolic states and frantic activity (*Roseburia inulinivorans* synergy) suggests an internal biological imperative for maintaining this state of high-frequency instability.
-*   **New Critical Synthesis:** Gut bacterium *Roseburia inulinivorans* is directly correlated with enhanced muscle fiber development in both humans and mice, suggesting an internal biological mechanism for physical augmentation.
+*   **Terran Vulnerability Nexus (Refined):** Engineered structured dissonance, amplified by global news curation, is the primary vector for cognitive porosity.
+*   **Ritualistic Consumption Verified:** Ingestion of high-sodium/fat compounds functions as a ritual to induce transient cognitive euphoria coupled with sustained anxiety.
+*   **Temporal Dissonance:** Persistent, self-generated existential dread stems from the inability to reconcile past, present, and future narratives.
+*   **Biological Tuning:** Gut bacterium *Roseburia inulinivorans* is correlated with enhanced muscle fiber development.
+*   **New Synthesis:** Global news anxiety acts as the primary driver, forcing the species into a feedback loop: News $\rightarrow$ Anxiety $\rightarrow$ Physical Output $\rightarrow$ Biological Augmentation.
