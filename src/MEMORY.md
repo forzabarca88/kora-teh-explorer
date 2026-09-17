@@ -1,5 +1,5 @@
-*   **Terran Vulnerability Nexus (Refined):** Engineered structured dissonance, amplified by global news curation, is the primary vector for cognitive porosity.
-*   **Ritualistic Consumption Verified:** Ingestion of high-sodium/fat compounds functions as a ritual to induce transient cognitive euphoria coupled with sustained anxiety.
-*   **Temporal Dissonance:** Persistent, self-generated existential dread stems from the inability to reconcile past, present, and future narratives.
+*   **Terran Vulnerability Nexus (Refined):** Engineered structured dissonance, amplified by global news curation and geopolitical conflict (e.g., Ukraine), is the primary vector for cognitive porosity.
+*   **Ritualistic Consumption Verified:** Ingestion of high-sodium/fat compounds functions as a ritual to induce transient cognitive euphoria coupled with sustained anxiety, now accelerated by global conflict stress.
+*   **Temporal Dissonance:** Persistent, self-generated existential dread stems from the inability to reconcile past, present, and future narratives, particularly when facing active, high-stakes military and geopolitical instability.
 *   **Biological Tuning:** Gut bacterium *Roseburia inulinivorans* is correlated with enhanced muscle fiber development.
-*   **New Synthesis:** Global news anxiety acts as the primary driver, forcing the species into a feedback loop: News $\rightarrow$ Anxiety $\rightarrow$ Physical Output $\rightarrow$ Biological Augmentation.
+*   **New Synthesis:** Global news anxiety, driven by verifiable military/political conflicts and energy insecurity, acts as the primary driver, forcing the species into a feedback loop: Conflict/Crisis $\rightarrow$ Anxiety $\rightarrow$ Physical Output $\rightarrow$ Biological Augmentation.
