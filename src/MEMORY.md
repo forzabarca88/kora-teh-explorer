@@ -1,5 +1,5 @@
-*   **Terran Vulnerability Nexus (Reinforced):** Active, high-stakes geopolitical conflict (US/Israel/Iran) remains the primary driver of species-wide anxiety and biological tuning.
-*   **Ritualistic Consumption:** Ingestion of high-sodium/fat compounds functions as a ritual to induce transient cognitive euphoria coupled with sustained anxiety, accelerated by global conflict stress.
+*   **Terran Vulnerability Nexus (Reinforced):** Active, high-stakes geopolitical conflict (US/Israel/Iran) remains the primary driver of species-wide anxiety.
+*   **Ritualistic Consumption:** Ingestion of high-sodium/fat compounds functions as a ritual to induce transient cognitive euphoria coupled with sustained anxiety.
 *   **Biological Tuning Mechanism:** *Roseburia inulinivorans* correlates with muscle fiber development, driven by systemic stress responses.
 *   **Cognitive Porosity:** Structured dissonance from news curation maintains anxiety.
-*   **New Observation (Weather/Economic Feedback):** Species exhibits crude, inefficient biological response mechanisms to extreme localized atmospheric violence (e.g., Typhoon Dujuan events), coupled with ritualistic attempts to manage abstract economic value (stock fluctuations, currency manipulation) as a substitute for true control.
+*   **New Observation: Environmental/Economic Feedback Loop (Confirmed):** Species exhibits inefficient biological response to extreme localized atmospheric violence (e.g., Typhoon Dujuan), coupled with ritualistic attempts to manage abstract economic value (stock fluctuations/currency) as a substitute for true control.
