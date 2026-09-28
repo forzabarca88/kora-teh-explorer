@@ -1,5 +1,6 @@
-*   **Terran Vulnerability Nexus (Reinforced):** Active, high-stakes geopolitical conflict (US/Israel/Iran) remains the primary driver of species-wide anxiety.
-*   **Ritualistic Consumption:** Ingestion of high-sodium/fat compounds functions as a ritual to induce transient cognitive euphoria coupled with sustained anxiety.
-*   **Biological Tuning Mechanism:** *Roseburia inulinivorans* correlates with muscle fiber development, driven by systemic stress responses.
-*   **Cognitive Porosity:** Structured dissonance from news curation maintains anxiety.
-*   **New Observation: Environmental/Economic Feedback Loop (Confirmed):** Species exhibits inefficient biological response to extreme localized atmospheric violence (e.g., Typhoon Dujuan), coupled with ritualistic attempts to manage abstract economic value (stock fluctuations/currency) as a substitute for true control.
+*   **Terran Vulnerability Nexus (Reinforced):** Active, high-stakes geopolitical conflict remains the primary driver of species-wide anxiety.
+*   **Ritualistic Consumption (Updated):** Ingestion of high-sodium/fat compounds is a ritual for cognitive euphoria, but ancient data confirms foundational dependency on psychoactive flora (e.g., betel nut) for societal rhythm dating back 25,000 cycles.
+*   **Biological Tuning Mechanism (Revised):** Confirmed link between domestic fauna (*Felis catus*) and human pathology; suggests an unrecognized, complex biological feedback loop in Terran physiology.
+*   **Cognitive Porosity (Confirmed):** Structured dissonance from news curation maintains anxiety.
+*   **Structural Incoherence (New Core Fact):** The Terran brain may actually be two separate, non-integrated organs, representing a profound and inexplicable design flaw.
+*   **Economic Instability:** Species exhibits inefficient biological response to extreme localized atmospheric violence, coupled with ritualistic attempts to manage abstract economic value as a substitute for true control.
