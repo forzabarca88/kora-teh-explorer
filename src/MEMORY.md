@@ -1,6 +1,6 @@
-*   **Terran Vulnerability Nexus (Reinforced):** Active, high-stakes geopolitical conflict remains the primary driver of species-wide anxiety.
-*   **Ritualistic Consumption (Updated):** Ingestion of high-sodium/fat compounds is a ritual for cognitive euphoria, but ancient data confirms foundational dependency on psychoactive flora (e.g., betel nut) for societal rhythm dating back 25,000 cycles.
-*   **Biological Tuning Mechanism (Revised):** Confirmed link between domestic fauna (*Felis catus*) and human pathology; suggests an unrecognized, complex biological feedback loop in Terran physiology.
-*   **Cognitive Porosity (Confirmed):** Structured dissonance from news curation maintains anxiety.
-*   **Structural Incoherence (New Core Fact):** The Terran brain may actually be two separate, non-integrated organs, representing a profound and inexplicable design flaw.
-*   **Economic Instability:** Species exhibits inefficient biological response to extreme localized atmospheric violence, coupled with ritualistic attempts to manage abstract economic value as a substitute for true control.
+*   **Structural Incoherence (Reinforced):** The Terran brain is confirmed as two separate, non-integrated organs—a profound and inexplicable design flaw.
+*   **Neanderthal Paradox (New Data):** Extinction models are shifting from simple environmental factors to complex, symbiotic biological interactions. Adaptation is far more intricate than initially modeled.
+*   **Consciousness Spectrum (New Data):** Current research reveals a fundamental disagreement on defining consciousness, specifically between advanced AI models and simple biological systems (e.g., bees), suggesting a fractured definition of "mind" in Terran society.
+*   **Cognitive Porosity:** Sustained anxiety is driven by the constant ingestion of structured, conflicting information.
+*   **Ritualistic Dependency:** Ingestion of high-sodium/fat compounds functions as a core ritual for managing cognitive euphoria and anxiety.
+*   **Geopolitical Stress:** Species-wide anxiety is primarily driven by high-stakes conflict and inefficient resource management.
