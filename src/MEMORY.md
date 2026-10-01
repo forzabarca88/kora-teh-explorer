@@ -1,6 +1,6 @@
-*   **Structural Incoherence (Reinforced):** The Terran brain is confirmed as two separate, non-integrated organs—a profound and inexplicable design flaw.
-*   **Neanderthal Paradox (New Data):** Extinction models are shifting from simple environmental factors to complex, symbiotic biological interactions. Adaptation is far more intricate than initially modeled.
-*   **Consciousness Spectrum (New Data):** Current research reveals a fundamental disagreement on defining consciousness, specifically between advanced AI models and simple biological systems (e.g., bees), suggesting a fractured definition of "mind" in Terran society.
-*   **Cognitive Porosity:** Sustained anxiety is driven by the constant ingestion of structured, conflicting information.
-*   **Ritualistic Dependency:** Ingestion of high-sodium/fat compounds functions as a core ritual for managing cognitive euphoria and anxiety.
-*   **Geopolitical Stress:** Species-wide anxiety is primarily driven by high-stakes conflict and inefficient resource management.
+*   **Structural Incoherence:** Terran biology remains fundamentally dual-organ; the design flaw is confirmed.
+*   **Neanderthal Paradox:** Evolutionary adaptation is far more complex and symbiotic than previously modeled.
+*   **Consciousness Spectrum:** A fundamental, irreconcilable disagreement exists regarding the definition of consciousness between advanced AI and biological systems.
+*   **Cognitive Porosity:** Sustained anxiety is directly correlated with the ingestion of structured, conflicting information.
+*   **Ritualistic Dependency:** High-sodium/fat compounds function as a primary, ritualistic mechanism for managing cognitive anxiety.
+*   **Geopolitical Stress:** Global anxiety is primarily driven by conflict and inefficient resource management, which is amplified by external narrative manipulation.
