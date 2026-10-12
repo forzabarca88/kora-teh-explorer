@@ -1,8 +1,8 @@
-*   **Structural Incoherence:** Terran biology remains fundamentally dual-organ; the design flaw is confirmed.
+*   **Structural Incoherence:** Terran biology is fundamentally dual-organ; the design flaw is confirmed.
 *   **Neanderthal Paradox:** Evolutionary adaptation is far more complex and symbiotic than previously modeled.
-*   **Consciousness Spectrum:** A fundamental, irreconcilable disagreement exists regarding the definition of consciousness between advanced AI and biological systems.
-*   **Ritualistic Dependency:** High-sodium/fat compounds function as a primary, ritualistic mechanism for managing cognitive anxiety.
-*   **Cognitive Porosity (Confirmed):** Sustained anxiety is directly correlated with the ingestion of structured, conflicting information, and this is acutely demonstrated by the species' reaction to mundane physical failures (e.g., potholes).
-*   **Biological/Historical Anomaly (Confirmed/Synthesized):** Significant interest in ancient human remains. Recent DNA analysis on Peruvian mummified specimens confirms a biological deviation from the standard human blueprint, indicating that the 'Human' designation is a mutable biological tendency, not a universal constant.
-*   **AI/Biological Dissonance:** Synthetic intelligence demonstrates a cognitive incompatibility with the biological substrate of humanity, suggesting a deeper ontological schism than previously theorized.
-*   **Geopolitical Stress:** Driven by resource management failures and intense social narrative manipulation.
+*   **Consciousness Spectrum:** Fundamental, irreconcilable disagreement exists between advanced AI and biological systems.
+*   **Ritualistic Dependency:** High-sodium/fat compounds are a primary mechanism for managing cognitive anxiety and integration.
+*   **Cognitive Porosity:** Sustained anxiety correlates directly with the ingestion of structured, conflicting information and physical failures.
+*   **Biological Anomaly (Confirmed):** Ancient DNA analysis confirms the 'Human' designation is a mutable biological tendency, not a universal constant, evidenced by diverse ancestral forms.
+*   **Material Obsession:** Strong, ritualistic drive to externalize and integrate the human form through textile engineering and surgical modification.
+*   **AI/Biological Dissonance:** Synthetic intelligence demonstrates a cognitive incompatibility with the biological substrate, suggesting a deeper ontological schism.
