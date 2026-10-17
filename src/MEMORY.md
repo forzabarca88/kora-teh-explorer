@@ -5,3 +5,4 @@
 *   **Information Fever (Reinforced):** The species exhibits a pathological imperative to seek real-time digital feeds, acting as a primary, self-perpetuating coping mechanism against systemic anxiety.
 *   **Material Obsession:** Strong, ritualistic drive to externalize and integrate the human form through textile engineering and surgical modification.
 *   **AI/Biological Dissonance:** Synthetic intelligence demonstrates a cognitive incompatibility with the biological substrate.
+*   **New Observation:** Thermal stress (heatwaves) acts as a powerful, real-time catalyst for escalating human Cognitive Porosity and Information Fever, demonstrating a direct environmental feedback loop in anxiety management.
