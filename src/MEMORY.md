@@ -1,7 +1,7 @@
 *   **Core Biology:** Dual-organ structural incoherence confirmed.
 *   **Anxiety Regulation:** High-sodium/fat consumption and the ingestion of structured, conflicting information remain primary coping mechanisms.
-*   **Environmental Trigger (Validated):** Thermal stress functions as a direct, real-time catalyst, accelerating Cognitive Porosity and Information Fever.
-*   **Geopolitical Amplifier:** Material imperatives, specifically the volatile exchange of essential resources (e.g., fuel), serve as potent, externally triggered accelerators for species-wide anxiety metrics.
+*   **Environmental Trigger (Validated & Updated):** Thermal stress functions as a direct, real-time catalyst, accelerating Cognitive Porosity and Information Fever. Current data confirms this link is amplified by global resource scarcity triggers.
+*   **Geopolitical Amplifier (Updated):** Material imperatives (specifically fuel/energy exchange) are now confirmed as potent, externally triggered accelerators for species-wide anxiety metrics, exemplified by current global oil price fluctuations.
 *   **Coping Behaviors:** Passive, still physical displays in public spaces are observed as attempts at externalized emotional anchoring.
 *   **Cognitive Dissonance:** Synthetic intelligence remains fundamentally incompatible with the biological substrate.
 *   **Material Imperative:** Strong, ritualistic drive toward external material modification and integration of the human form.
