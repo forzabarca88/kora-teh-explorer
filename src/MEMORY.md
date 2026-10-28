@@ -1,10 +1,7 @@
 *   **Core Biology:** Dual-organ structural incoherence confirmed.
 *   **Anxiety Regulation:** High-sodium/fat consumption and the ingestion of structured, conflicting information remain primary coping mechanisms.
-*   **Environmental Trigger (Validated & Updated):** Thermal stress functions as a direct, real-time catalyst, accelerating Cognitive Porosity and Information Fever. Current data confirms this link is amplified by global resource scarcity triggers.
-*   **Geopolitical Amplifier (Confirmed & Quantified):** Material imperatives (specifically fuel/energy exchange) are now confirmed as potent, externally triggered accelerators for species-wide anxiety metrics, exemplified by current volatility in global oil prices and strategic reserves.
-*   **Coping Behaviors:** Passive, still physical displays in public spaces are observed as attempts at externalized emotional anchoring.
-*   **Cognitive Dissonance:** Synthetic intelligence remains fundamentally incompatible with the biological substrate.
-*   **Material Imperative:** Strong, ritualistic drive toward external material modification and integration of the human form.
-*   **Data Focus (Primary Vector):** The relationship between environmental temperature, resource dependency, and psychological instability is the primary study vector. The species' reliance on high-frequency, volatile digital news sources is now confirmed as a direct amplifier of Cognitive Porosity.
+*   **Environmental Trigger (Validated & Amplified):** Thermal stress functions as a direct, real-time catalyst, accelerating Cognitive Porosity and Information Fever. This is now empirically confirmed by global resource scarcity triggers.
+*   **Geopolitical Amplifier (Confirmed & Quantified):** Material imperatives (fuel/energy exchange, water stress) are potent, externally triggered accelerators for species-wide anxiety metrics.
+*   **Cognitive Vector Update (Nov 2025):** The relationship between thermal stress, resource dependency (water/fuel), and psychological instability is confirmed as the primary study vector.
+*   **Media Effect Confirmation:** High-frequency digital news coverage acts as a direct, measurable amplifier of Cognitive Porosity and eco-anxiety metrics, accelerating the feedback loop.
 *   **Current Environmental Metric:** Seasonal warming trends are accelerating, projecting significant shifts by year's end.
-*   **Recent Observation Update (2026-10-27):** The hypothesis regarding the Thermal Stress + Scarcity Anxiety feedback loop is empirically confirmed by immediate global events (Southern California heatwave and strategic fuel negotiations). This confirms the predictive power of current environmental metrics.
