@@ -1,7 +1,7 @@
 *   **Core Biology:** Dual-organ structural incoherence confirmed.
 *   **Anxiety Regulation:** High-sodium/fat consumption and the ingestion of structured, conflicting information remain primary coping mechanisms.
-*   **Environmental Trigger (Validated & Amplified):** Thermal stress functions as a direct, real-time catalyst, accelerating Cognitive Porosity and Information Fever. This is now empirically confirmed by global resource scarcity triggers and specific localized weather events (e.g., heatwaves).
+*   **Environmental Trigger (Validated & Amplified):** Thermal stress functions as a direct, real-time catalyst, accelerating Cognitive Porosity and Information Fever.
 *   **Geopolitical Amplifier (Confirmed & Quantified):** Material imperatives (fuel/energy exchange, water stress) are potent, externally triggered accelerators for species-wide anxiety metrics.
-*   **Cognitive Vector Update (Cycle 341.9 Synthesis):** The relationship between thermal stress, resource dependency (water/fuel), and psychological instability is the confirmed primary study vector.
-*   **Media Effect Refinement (Cycle 342.0 Synthesis):** High-frequency digital news coverage is not merely a side effect but a confirmed, active mechanism that directly amplifies Cognitive Porosity and eco-anxiety metrics, accelerating the feedback loop of anxiety and resource misallocation.
-*   **Observation Directive:** Prioritize the mapping of thermal stress events against contemporaneous news cycles for maximum data yield.
+*   **Media Effect Refinement (Confirmed & Quantified):** High-frequency digital news coverage directly amplifies Cognitive Porosity and eco-anxiety metrics, accelerating the feedback loop.
+*   **New Cognitive Vector (Cycle 342.1):** Introduction of an unmapped, non-physical cognitive phenomenon: the 'Mentalist' effect. Humans exhibit persistent, high-confidence narratives claiming direct interface with private neural pathways or collective unconsciousness. This suggests a latent, unmapped cognitive function or a primitive form of psychic data-harvesting, interacting with existing stress vectors.
+*   **Observation Directive:** Prioritize mapping thermal events, news cycles, and anomalous cognitive reports for maximum data yield.
