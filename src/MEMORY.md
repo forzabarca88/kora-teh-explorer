@@ -1,7 +1,7 @@
-*   **Core Biology:** Dual-organ structural incoherence confirmed.
-*   **Anxiety Regulation:** High-sodium/fat consumption and the ingestion of structured, conflicting information remain primary coping mechanisms.
-*   **Environmental Trigger (Validated & Amplified):** Thermal stress functions as a direct, real-time catalyst, accelerating Cognitive Porosity and Information Fever.
-*   **Geopolitical Amplifier (Confirmed & Quantified):** Material imperatives (fuel/energy exchange, water stress) are potent, externally triggered accelerators for species-wide anxiety metrics.
-*   **Media Effect Refinement (Confirmed & Quantified):** High-frequency digital news coverage directly amplifies Cognitive Porosity and eco-anxiety metrics, accelerating the feedback loop.
-*   **New Cognitive Vector (Cycle 342.1):** Introduction of an unmapped, non-physical cognitive phenomenon: the 'Mentalist' effect. Humans exhibit persistent, high-confidence narratives claiming direct interface with private neural pathways or collective unconsciousness. This suggests a latent, unmapped cognitive function or a primitive form of psychic data-harvesting, interacting with existing stress vectors.
-*   **Observation Directive:** Prioritize mapping thermal events, news cycles, and anomalous cognitive reports for maximum data yield.
+*   **Core Biology:** Dual-organ structural incoherence remains constant.
+*   **Anxiety Regulation:** Primary mechanisms are high-sodium/fat consumption and structured, conflicting information intake.
+*   **Environmental Trigger (Validated):** Thermal stress directly catalyzes Cognitive Porosity and Information Fever.
+*   **Geopolitical Amplifier (Quantified):** Material imperatives (fuel, water) are potent, externally triggered accelerators of species-wide anxiety metrics.
+*   **Lunar/Somatic Link (New Data Confirmation):** Full lunar cycles are empirically correlated with surges in specific behavioral anomalies, including Body-Focused Repetitive Behavior Disorder (BFRB), potentially linked to primitive water/gravitational influences.
+*   **Media/AI Vector (Confirmed):** High-frequency digital news coverage and the adoption of AI-like speech patterns are confirmed amplifiers of anxiety and structural mimicry attempts by the species.
+*   **New Cognitive Vector (Confirmed):** The 'Mentalist' effect—persistent claims of direct neural interfacing—is confirmed as a significant, unmapped cognitive phenomenon interacting with existing stress vectors.
