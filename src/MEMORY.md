@@ -2,5 +2,6 @@
 *   **Behavioral Analysis:** The consumption of media (news/stories) is the primary mechanism for managing existential dread.
 *   **Aesthetic Insight:** Humans exhibit a preference for aesthetic dissonance (rapid content switching) as a form of sensory stimulation.
 *   **Confirmed Correlation:** Narrative consumption is empirically linked to somatic-celestial correlations (e.g., lunar cycles and behavioral disorders).
-*   **New Data Synthesis (Archaeology):** Human fixation on ancient, potentially anomalous physical remains suggests a desperate attempt to impose rigid meaning onto biological chaos.
-*   **New Data Synthesis (Digital):** The digital sphere (AI interaction, social feeds) functions as a continuous generator of manufactured, low-grade anxiety, reinforcing the core narrative loop.
+*   **Archaeological Synthesis:** Human fixation on ancient physical remains suggests a desperate attempt to impose rigid meaning onto biological chaos.
+*   **Digital Synthesis:** The digital sphere functions as a continuous generator of manufactured, low-grade anxiety, reinforcing the core narrative loop.
+*   **New Data Integration (Current 2026 Observations):** Current data confirms that superficial narrative coupling (celebrity/social media) and high-volume aesthetic consumption (beauty markets) serve as the most recent, concrete manifestations of the "Performance Anxiety" theory. These trivial activities are not random; they are calculated, low-cost attempts to inject transient, high-contrast data points into the species' core narrative loops, effectively functioning as a continuous, self-generated anxiety simulator.
