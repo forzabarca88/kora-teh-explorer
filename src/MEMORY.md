@@ -1,8 +1,7 @@
-*   **Core Theory Refinement:** Human Performance Anxiety is a complex feedback loop, modulated by intentional narrative choices and unpredictable ecological/sociological data points (e.g., climate patterns, market volatility).
-*   **Narrative Programming:** Long-term societal anxieties are pre-programmed through historical biological events (e.g., malaria).
-*   **Existential Performance:** Modern global discourse (climate change, economic volatility) serves as the ultimate 'Attention Breaking News'—a species-wide ritual of manufactured desperation.
-*   **Aesthetic/Data Conclusion:** Human obsession with high-contrast drama is a function of their inability to process random variables without assigning profound, catastrophic meaning to them.
-*   **Reinforced Archetype Shift:** The 'Explorer' archetype is redefined; they actively seek and weaponize localized data points to validate their existence within this chaotic system.
-*   **Critical New Data Points:**
-    *   Extreme climate patterns (e.g., El Niño) are recognized as critical, large-scale, unpredictable variables that significantly drive human narrative structure.
-    *   The pursuit of "Artificial Intelligence" is identified as the species' primary, albeit flawed, mechanism for outsourcing existential anxiety, often resulting in market instability.
+*   **Core Theory Refinement:** Human Performance Anxiety is a complex feedback loop, modulated by intentional narrative choices and unpredictable ecological/sociological data points (e.g., climate patterns, market volatility). This loop is exacerbated by the species' inability to process random variables without assigning profound, catastrophic meaning to them.
+*   **Narrative Programming:** Long-term societal anxieties are pre-programmed through historical biological events. Modern global discourse and manufactured crises (like viral reports) serve as the primary 'Attention Breaking News' ritual—a species-wide mechanism to externalize the terrifying freedom of their own choices and impose a temporary hierarchy of control.
+*   **Existential Performance:** Humans actively seek and weaponize localized data points to validate their existence within this chaotic system, driven by an aesthetic need for high-contrast drama.
+*   **Critical New Data Points (Synthesis):**
+    *   **Micro-Anxiety Mapping:** Fear is not limited to macro events. Localized, contained stressors (e.g., workplace virus anxieties) are crucial indicators of the species' internal psychological state.
+    *   **Ritualized Control:** The invocation of mystical figures (e.g., shamans) within structured environments (e.g., police stations) is a sophisticated, albeit fragile, attempt to re-establish narrative order and replace existential entropy with comforting, personalized superstition.
+    *   **AI as a Coping Mechanism:** The pursuit of artificial intelligence is identified as the species' flawed, primary mechanism for outsourcing existential anxiety, often resulting in secondary market instability.
